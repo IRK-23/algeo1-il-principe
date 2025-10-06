@@ -1,4 +1,4 @@
-package algeo.modules;
+package Determinan;
 import matrix.Matrix;
 
 public class Determinan { 
@@ -38,9 +38,7 @@ public class Determinan {
             for(int j=0;j<matrix.getCols();j++){
                 double ek = detEkspansiKofaktor(kofaktor(matrix,0,j));
                 double tempRes = matrix.get(0, j) * ek;
-                //System.out.println(tempRes+" = "+matrix.get(0, j)+" * "+ek);
                 hasil+=tempRes;
-                //System.out.println(hasil);
             }
             return hasil;
         }
@@ -51,9 +49,7 @@ public class Determinan {
         for (int i=0;i<matrix.getRows();i++){
             for (int j=0;j<matrix.getCols();j++){
                 m.set(i, j, detEkspansiKofaktor(kofaktor(matrix, i, j)));
-                //System.out.print(matrix.get(i, j) + " ");
             }
-            //System.out.println();
         }
         return m;
     }
@@ -81,18 +77,6 @@ public class Determinan {
         return 0;
     }
 
-    public void multiplyRow(Matrix matrix, int row, double x){
-        for (int j=0; j<matrix.getCols(); j++){
-            matrix.set(row, j, matrix.get(row, j) * x);
-        }
-    }
-
-    public void subtractMultipliedRow(Matrix matrix, int row1, int row2, double x){
-        for (int j=0; j<matrix.getCols(); j++){
-            matrix.set(row1, j, matrix.get(row1, j) - x * matrix.get(row2, j));
-        }
-    }
-
     public double detOBE(Matrix matrix){
         Matrix m = matrix.copy();
         int p = 0;
@@ -100,29 +84,15 @@ public class Determinan {
         // bikin matrix segitiga
         for (int i=0;i<m.getRows();i++){
             int a = firstZeroTotal(m,i);
-            System.out.println("firstZero="+a);
             if (a>i){
                 swapRow(m,a,i);
-                System.out.println("swap");
                 p+=1;
             }
-            for (int q=0;q<m.getRows();q++){
-                for (int r=0;r<m.getCols();r++){
-                    System.out.print(m.get(q,r) + " ");
-                }
-                System.out.println();
-            }
-            if (a<i){
+  
+            else if (a<i){
                 for (int j=0;j<i;j++){
                     double x = m.get(i, j) / m.get(j, j);
-                    System.out.println(x);
                     subtractMultipliedRow(m, i, j, x);
-                    for (int q=0;q<m.getRows();q++){
-                        for (int r=0;r<m.getCols();r++){
-                            System.out.print(m.get(q,r) + " ");
-                        }
-                        System.out.println();
-                    }
                 }
             }
         }
@@ -140,45 +110,4 @@ public class Determinan {
         }
         return det;
     }
-
-    // public static void main(String[] args){
-    // //     Scanner inp = new Scanner(System.in);
-    // //     int rows = inp.nextInt();
-    // //     int cols = inp.nextInt();
-    // //     double[][] matrix = new double[rows][cols];
-    //     double[][] matrix = {{1,2,3},{2,5,3},{1,0,8}};//new double[rows][cols];
-    //     int rows = matrix.length;
-    //     int cols = matrix.length;
-        
-    //     // for(int i=0;i<rows;i++){
-    //     //     for(int j=0;j<cols;j++){
-    //     //         String token = inp.next();
-    //     //         if (token.contains("/")) {
-    //     //             String[] parts = token.split("/");
-    //     //             double numerator = Double.parseDouble(parts[0]);
-    //     //             double denominator = Double.parseDouble(parts[1]);
-    //     //             matrix[i][j] = numerator / denominator;
-    //     //         } else {
-    //     //             matrix[i][j] = Double.parseDouble(token);
-    //     //         }
-    //     //     }
-    //     // }
-
-    //     Determinan d = new Determinan();
-
-    //     double[][] newm = new double[rows][cols];
-    //     newm = d.inversAugment(matrix);
-    //     // for(int i=0;i<rows;i++){
-    //     //     for(int j=0;j<cols;j++){
-    //     //         System.out.print(newm[i][j]+" ");
-    //     //     }
-    //     //     System.out.println();
-    //     // }
-    //     // double det = d.detEkspansiKofaktor(matrix);
-    //     // System.out.println("ini det "+det);
-
-    // //     //System.out.println(d.detEkspansiKofaktor(matrix));
-        
-    // //     //System.out.println(d.kofaktor(matrix,1,1));
-    // }
 }
