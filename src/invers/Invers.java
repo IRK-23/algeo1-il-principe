@@ -1,4 +1,4 @@
-package Invers;
+package invers;
 import matrix.Matrix;
 
 public class Invers {

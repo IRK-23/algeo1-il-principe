@@ -1,4 +1,4 @@
-package Determinan;
+package determinan;
 import matrix.Matrix;
 
 public class Determinan { 
