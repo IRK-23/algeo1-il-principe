@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.io.IOException;
+import java.io.File;
 import matrix.Matrix;
 import matrix.FileHandler;
 import spl.*;
@@ -34,7 +35,7 @@ public class Main {
                         break;
                     case 6:
                         running = false;
-                        System.out.println("\n**************************************");
+                        System.out.println("\n  **************************************");
                         System.out.println("  *  Terima kasih telah menggunakan    *");
                         System.out.println("  *        Program SPL & Geometri      *");
                         System.out.println("  **************************************\n");
@@ -106,7 +107,7 @@ public class Main {
         if (inputType == 1) {
             augmented = inputMatrixFromKeyboard();
         } else if (inputType == 2) {
-            System.out.print("\nMasukkan nama file (contoh: test/spl_case1.txt): ");
+            System.out.print("\nMasukkan nama file (contoh: test/spl/spl_case1.txt): ");
             String filename = scanner.nextLine();
             augmented = FileHandler.readAugmentedMatrix(filename);
             System.out.println("File berhasil dibaca!");
@@ -125,12 +126,12 @@ public class Main {
             case 2:
                 solver = new GaussJordan();
                 break;
-            case 3:
-                solver = new CramerRule();
-                break;
-            case 4:
-                solver = new InverseMatrix();
-                break;
+            //case 3:
+              //  solver = new CramerRule();
+                //break;
+            //case 4:
+                //solver = new InverseMatrix();
+                //break;
         }
         
         if (solver != null) {
@@ -147,16 +148,35 @@ public class Main {
             System.out.println();
             System.out.print("Simpan hasil ke file? (y/n): ");
             String save = scanner.nextLine().trim();
-            
+
             if (save.equalsIgnoreCase("y")) {
-                System.out.print("Nama file output (contoh: hasil_spl.txt): ");
+                System.out.println("\nPilih lokasi penyimpanan:");
+                System.out.println("1. Folder saat ini (root)");
+                System.out.println("2. Folder test/spl");
+                System.out.print("Pilih (1/2): ");
+                
+                int choice = getIntInput("");
+                String folder = (choice == 2) ? "test/spl/" : "";
+                
+                System.out.print("Nama file output: ");
                 String outputFile = scanner.nextLine().trim();
                 
-                FileHandler.writeSPLOutput(outputFile, result, augmented);
-                System.out.println("Hasil berhasil disimpan ke: " + outputFile);
+                String fullPath = folder + outputFile;
+                
+                // Buat folder jika pilih opsi 2 dan folder belum ada
+                if (choice == 2) {
+                    File dir = new File("test/spl");
+                    if (!dir.exists()) {
+                        dir.mkdirs();
+                    }
+                }
+                
+                FileHandler.writeSPLOutput(fullPath, result, augmented);
+                System.out.println("✓ Hasil berhasil disimpan ke: " + fullPath);
             }
         }
     }
+
     
     private static Matrix inputMatrixFromKeyboard() {
         System.out.println();
@@ -182,7 +202,7 @@ public class Main {
                 System.out.println("Error: Jumlah elemen tidak sesuai!");
                 System.out.println("   Diharapkan: " + (m + 1) + " elemen");
                 System.out.println("   Diterima: " + values.length + " elemen");
-                i--; // ulangi baris ini
+                i--; 
                 continue;
             }
             
@@ -191,7 +211,7 @@ public class Main {
                     matrix.set(i, j, Double.parseDouble(values[j]));
                 } catch (NumberFormatException e) {
                     System.out.println("Error: Format angka tidak valid!");
-                    i--; // ulangi baris ini
+                    i--;
                     break;
                 }
             }
