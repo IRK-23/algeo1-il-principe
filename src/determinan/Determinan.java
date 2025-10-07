@@ -1,5 +1,6 @@
 package determinan;
 import matrix.Matrix;
+import java.lang.Math;
 
 public class Determinan { 
     public double detM2x2(Matrix matrix){
@@ -44,16 +45,6 @@ public class Determinan {
         }
     }
 
-    public Matrix matrixKofaktor(Matrix matrix){
-        Matrix m = new Matrix(matrix.getRows(), matrix.getCols());
-        for (int i=0;i<matrix.getRows();i++){
-            for (int j=0;j<matrix.getCols();j++){
-                m.set(i, j, detEkspansiKofaktor(kofaktor(matrix, i, j)));
-            }
-        }
-        return m;
-    }
-
     public void swapRow(Matrix matrix, int row1, int row2){
         if (row1!=row2){
             for (int j=0;j<matrix.getCols();j++){
@@ -77,37 +68,48 @@ public class Determinan {
         return 0;
     }
 
-    public double detOBE(Matrix matrix){
+    public DeterminanResult detOBE(Matrix matrix){
+        StringBuilder steps = new StringBuilder();
         Matrix m = matrix.copy();
         int p = 0;
+
+        steps.append("--- MENGHITUNG DETERMINAN DENGAN METODE REDUKSI BARIS (OBE) ---\n");
+        steps.append("Matriks Awal:\n");
+        steps.append(m.toString()).append("\n\n");
 
         // bikin matrix segitiga
         for (int i=0;i<m.getRows();i++){
             int a = firstZeroTotal(m,i);
             if (a>i){
+                steps.append("Tukar baris ").append(i+1).append(" dengan baris ").append(a+1).append("\n");
                 swapRow(m,a,i);
-                p+=1;
+                steps.append(m.toString()).append("\n\n");
+                p++;
             }
   
             else if (a<i){
                 for (int j=0;j<i;j++){
                     double x = m.get(i, j) / m.get(j, j);
+                    steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" - (").append(String.format("%.4f", x)).append(") * Baris ").append(j+1).append("\n");
                     subtractMultipliedRow(m, i, j, x);
+                    steps.append(m.toString()).append("\n\n");
                 }
             }
         }
 
+        steps.append("Didapatkan Matriks Segitiga Bawah:\n");
+        steps.append(m.toString()).append("\n\n");
+        steps.append("Jumlah pertukaran baris: ").append(p).append("\n");
+
         // hitung determinan
-        double det;
-        if (p%2==0){
-            det = 1;
-        }
-        else{
-            det = -1;
-        }
+        double det = Math.pow(-1,p);
+        steps.append("Determinan = (-1)^").append(p);
+
         for (int i=0; i<m.getRows(); i++){
             det *= m.get(i, i);
+            steps.append(" * ").append(m.get(i,i));
         }
-        return det;
+        steps.append(" = ").append(det);
+        return new DeterminantResult(det, steps);
     }
 }
