@@ -3,6 +3,8 @@ import java.io.IOException;
 import matrix.Matrix;
 import matrix.FileHandler;
 import spl.*;
+import determinan.*;
+import invers.*;
 
 public class Main {
     private static final Scanner scanner = new Scanner(System.in);
@@ -125,12 +127,12 @@ public class Main {
             case 2:
                 solver = new GaussJordan();
                 break;
-            case 3:
-                solver = new CramerRule();
-                break;
-            case 4:
-                solver = new InverseMatrix();
-                break;
+            // case 3:
+            //     solver = new CramerRule();
+            //     break;
+            // case 4:
+            //     solver = new InverseMatrix();
+            //     break;
         }
         
         if (solver != null) {
@@ -259,16 +261,157 @@ public class Main {
         System.out.println("=====================================================");
         System.out.println("                  DETERMINAN MATRIKS                 ");
         System.out.println("=====================================================\n");
-        System.out.println("Lanjut...");
-        System.out.println("  (Modul Determinan)");
+        System.out.println("Pilih Metode Penyelesaian:");
+        System.out.println("  1. Metode Ekspansi Kofaktor");
+        System.out.println("  2. Metode Reduksi Baris (OBE)");
+        System.out.println();
+        
+        int method = getIntInput("Pilih metode (1-2): ");
+        
+        if (method < 1 || method > 2) {
+            System.out.println("Metode tidak valid!");
+            return;
+        }
+        
+        System.out.println();
+        System.out.println("Pilih Jenis Input:");
+        System.out.println("  1. Input dari Keyboard");
+        System.out.println("  2. Input dari File");
+        System.out.println();
+        
+        int inputType = getIntInput("Pilih jenis input (1-2): ");
+        
+        Matrix matrix = null;
+        
+        if (inputType == 1) {
+            matrix = inputMatrix();
+        } 
+        else if (inputType == 2) {
+            System.out.print("\nMasukkan nama file (contoh: test/spl_case1.txt): ");
+            String filename = scanner.nextLine();
+            // matrix = FileHandler.readMatrix(filename); //PR
+            System.out.println("File berhasil dibaca!");
+        } 
+        else {
+            System.out.println("Jenis input tidak valid!");
+            return;
+        }
+
+        Determinan det = new Determinan();
+        DeterminanResult result;
+        
+        System.out.println("\n" + "=".repeat(55));
+        if (method == 1) {
+            System.out.println("Menghitung dengan Metode Ekspansi Kofaktor...");
+            result = det.detEkspansiKofaktor(matrix);
+        } 
+        else {
+            System.out.println("Menghitung dengan Metode Reduksi Baris (OBE)...");
+            result = det.detOBE(matrix);
+        }
+        System.out.println("=".repeat(55));
+
+        result.printSteps();
     }
     
+    private static Matrix inputMatrix() {
+        System.out.println();
+        System.out.println("=====================================================");
+        System.out.println("           INPUT MATRIKS");
+        System.out.println("=====================================================");
+        
+        int n = getIntInput("Ukuran matriks (n*n): ");
+        
+        Matrix matrix = new Matrix(n,n);
+        
+        System.out.println("\nMasukkan elemen matriks:");
+        System.out.println();
+        
+        for (int i = 0; i < n; i++) {
+            System.out.print("Baris " + (i+1) + ": ");
+            String line = scanner.nextLine().trim();
+            String[] values = line.split("\\s+");
+            
+            if (values.length != n) {
+                System.out.println("Error: Jumlah elemen tidak sesuai!");
+                System.out.println("   Diharapkan: " + n + " elemen");
+                System.out.println("   Diterima: " + values.length + " elemen");
+                i--;
+                continue;
+            }
+            
+            for (int j = 0; j < n; j++) {
+                try {
+                    matrix.set(i, j, Double.parseDouble(values[j]));
+                } catch (NumberFormatException e) {
+                    System.out.println("Error: Format angka tidak valid!");
+                    i--;
+                    break;
+                }
+            }
+        }
+        
+        System.out.println("\nMatriks berhasil diinput!");
+        System.out.println("\nMatriks:");
+        matrix.print();
+        
+        return matrix;
+    }
+
     private static void handleInverse() {
         System.out.println("=====================================================");
         System.out.println("            MATRIKS BALIKAN (INVERSE)                ");
         System.out.println("=====================================================\n");
-        System.out.println("Lanjut");
-        System.out.println("  (Modul Inverse)");
+        System.out.println("Pilih Metode Penyelesaian:");
+        System.out.println("  1. Metode Augment");
+        System.out.println("  2. Metode Adjoin");
+        System.out.println();
+        
+        int method = getIntInput("Pilih metode (1-2): ");
+        
+        if (method < 1 || method > 2) {
+            System.out.println("Metode tidak valid!");
+            return;
+        }
+        
+        System.out.println();
+        System.out.println("Pilih Jenis Input:");
+        System.out.println("  1. Input dari Keyboard");
+        System.out.println("  2. Input dari File");
+        System.out.println();
+        
+        int inputType = getIntInput("Pilih jenis input (1-2): ");
+        
+        Matrix matrix = null;
+        
+        if (inputType == 1) {
+            matrix = inputMatrix();
+        } 
+        else if (inputType == 2) {
+            System.out.print("\nMasukkan nama file (contoh: test/spl_case1.txt): ");
+            String filename = scanner.nextLine();
+            // matrix = FileHandler.readMatrix(filename); //PR
+            System.out.println("File berhasil dibaca!");
+        } 
+        else {
+            System.out.println("Jenis input tidak valid!");
+            return;
+        }
+
+        Invers inv = new Invers();
+        InversResult result;
+        
+        System.out.println("\n" + "=".repeat(55));
+        if (method == 1) {
+            System.out.println("Menghitung dengan Metode Augment...");
+            result = inv.inversAugment(matrix);
+        } else {
+            System.out.println("Menghitung dengan Metode Adjoin...");
+            result = inv.inversAdjoin(matrix);
+        }
+        System.out.println("=".repeat(55));
+
+        result.printSteps();
     }
     
     private static void handleInterpolation() {

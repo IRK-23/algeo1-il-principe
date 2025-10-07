@@ -1,4 +1,6 @@
 package invers;
+import matrix.Matrix;
+import determinan.*;
 
 public class InversResult {
     private Matrix matrix;
@@ -9,7 +11,7 @@ public class InversResult {
         this.steps = steps;
     }
     
-    public double getMatrix(){
+    public Matrix getMatrix(){
         return matrix;
     }
     

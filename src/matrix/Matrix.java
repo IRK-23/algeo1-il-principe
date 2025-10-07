@@ -82,4 +82,14 @@ public class Matrix {
         return m;
     }
 
+    public String matrixToString(Matrix m) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < m.getRows(); i++) {
+            for (int j = 0; j < m.getCols(); j++) {
+                sb.append(String.format("%10.4f ", m.get(i, j)));
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

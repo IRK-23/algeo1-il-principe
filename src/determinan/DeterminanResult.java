@@ -1,10 +1,11 @@
 package determinan;
+import matrix.Matrix;
 
 public class DeterminanResult{
     private double value;
     private StringBuilder steps;
     
-    public DeterminantResult(double value, StringBuilder steps){
+    public DeterminanResult(double value, StringBuilder steps){
         this.value = value;
         this.steps = steps;
     }
