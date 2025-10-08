@@ -105,23 +105,6 @@ public class Determinan {
         steps.append("Matriks Awal:\n");
         steps.append(m.matrixToString(m)).append("\n\n");
 
-        // for (int i=0;i<m.getRows();i++){
-        //     int totalZero;
-        //     if (m.get(i,0)==0){
-        //         totalZero=1;
-        //     }
-        //     else{
-        //         totalZero=0;
-        //     }
-
-        //     for (int j=0;j<m.getCols();j++){
-        //         if (j>0 && j==totalZero-1 && m.get(i,j)==0){
-        //             totalZero++;
-        //         }
-
-        //     }
-        // }
-
         // bikin matrix segitiga
         for (int i=1;i<m.getRows();i++){
             do{
@@ -134,7 +117,7 @@ public class Determinan {
 
                 if (m.get(i,i)==0){
                     int b = firstZeroTotal(m, a);
-                    if (a!=b){
+                    if (a>b){
                         steps.append("Tukar baris ").append(i+1).append(" dengan baris ").append(a+1).append("\n");
                         swapRow(m,i,a);
                         steps.append(m.matrixToString(m)).append("\n\n");
@@ -159,7 +142,7 @@ public class Determinan {
             } while (firstZeroTotal(m,i)!=i);
         }
 
-        steps.append("Didapatkan Matriks Segitiga Bawah:\n");
+        steps.append("Didapatkan Matriks Segitiga Atas:\n");
         steps.append(m.matrixToString(m)).append("\n\n");
         steps.append("Jumlah pertukaran baris: ").append(p).append("\n");
 
