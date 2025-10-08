@@ -85,31 +85,48 @@ public class Invers {
         }
 
         steps.append("Matriks [A|I]:\n");
-        steps.append(m.toString()).append("\n\n");
+        steps.append(m.matrixToString(m)).append("\n\n");
 
         // OBE fase maju
         for (int i=0;i<m.getRows();i++){
-            int a = det.firstZeroTotal(m,i);
-            if (a>i){
-                steps.append("Tukar baris ").append(i+1).append(" dengan baris ").append(a+1).append("\n");
-                det.swapRow(m,a,i);
-                steps.append(m.toString()).append("\n\n");
-            }
-
-            else if (a<i){
-                for (int j=0;j<i;j++){
-                    double x = m.get(i,j)/m.get(j,j);
-                    steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" - (").append(String.format("%.4f", x)).append(") * Baris ").append(j+1).append("\n");
-                    m.subtractMultipliedRow(m,i,j,x);
-                    steps.append(m.toString()).append("\n\n");
+            do{
+                int a = det.firstZeroTotal(m,i);
+            
+                if (a==m.getRows()){
+                    steps.append("Matriks [I|A] tidak dapat terbentuk, maka invers matriks A tidak ada.\n");
+                    return new InversResult(null, steps);
                 }
-            }
 
-            if (m.get(i,i)!=1){
+                if (m.get(i,i)==0){
+                    int b = det.firstZeroTotal(m, a);
+                    if (a>b){
+                        steps.append("Tukar baris ").append(i+1).append(" dengan baris ").append(a+1).append("\n");
+                        det.swapRow(m,i,a);
+                        steps.append(m.matrixToString(m)).append("\n\n");
+                    }
+                    else{
+                        steps.append("Matriks [I|A] tidak dapat terbentuk, maka invers matriks A tidak ada.\n");
+                        return new InversResult(null, steps);
+                    }
+                }
+    
+                if (a<i){
+                    for (int j=0;j<i;j++){
+                        if (m.get(i,j)!=0){
+                            double x = m.get(i, j) / m.get(j, j);
+                            steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" - (").append(x).append(") * Baris ").append(j+1).append("\n");
+                            m.subtractMultipliedRow(m, i, j, x);
+                            steps.append(m.matrixToString(m)).append("\n\n");
+                        }
+                    }
+                }
+            } while (det.firstZeroTotal(m,i)!=i);
+
+            if (m.get(i,i)!=1 && m.get(i,i)!=0){
                 double x = 1/m.get(i,i);
-                steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" * ").append(String.format("%.4f", x));
+                steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" * ").append(x).append("\n");
                 m.multiplyRow(m,i,x);
-                steps.append(m.toString()).append("\n\n");
+                steps.append(m.matrixToString(m)).append("\n\n");
             }
         }
 
@@ -119,7 +136,7 @@ public class Invers {
                 double x = m.get(i,j)/m.get(j,j);
                 steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" - (").append(String.format("%.4f", x)).append(") * Baris ").append(j+1).append("\n");
                 m.subtractMultipliedRow(m,i,j,x);
-                steps.append(m.toString()).append("\n\n");
+                steps.append(m.matrixToString(m)).append("\n\n");
             }
         }
 
@@ -131,7 +148,7 @@ public class Invers {
         }
 
         steps.append("Didapatkan Matriks Invers:\n");
-        steps.append(invers.toString()).append("\n\n");
+        steps.append(invers.matrixToString(invers)).append("\n\n");
         return new InversResult(invers, steps);
     }
     
