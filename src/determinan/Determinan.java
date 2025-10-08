@@ -24,10 +24,10 @@ public class Determinan {
         }
         return m;
     }
-
+    // tambahin kalo elemen yg diambil 0
     public double rekursiEkspansiKofaktor(Matrix matrix, StringBuilder steps){
         if (matrix.getRows() == 2){
-            steps.append("det(2x2) = (").append(matrix.get(0, 0)).append(" * ").append(matrix.get(1, 1)).append(") - (").append(matrix.get(0, 1)).append(" * ").append(matrix.get(1, 0)).append(") = ").append(String.format("%.4f", detM2x2(matrix))).append("\n");
+            steps.append("det(2x2) = (").append(matrix.get(0, 0)).append(" * ").append(matrix.get(1, 1)).append(") - (").append(matrix.get(0, 1)).append(" * ").append(matrix.get(1, 0)).append(") = ").append(detM2x2(matrix)).append("\n");
             return detM2x2(matrix);
         }
 
@@ -44,7 +44,7 @@ public class Determinan {
             double koefisien = matrix.get(0, j);
             Matrix minorr = minor(matrix, 0, j);
 
-            steps.append("Koefisien a1").append(j + 1).append(" = ").append(String.format("%.4f", koefisien)).append(" * Tanda ").append(sign).append("\n");
+            steps.append("Koefisien a1").append(j + 1).append(" = ").append(koefisien).append(" * Tanda ").append(sign).append("\n");
             steps.append("Minor M1").append(j + 1).append(":\n");
             steps.append(minorr.matrixToString(minorr)).append("\n");
 
@@ -52,9 +52,9 @@ public class Determinan {
             double temp = sign * koefisien * detMinor;
             hasil+=temp;
 
-            steps.append("Kontribusi Kolom ").append(j + 1).append(" = ").append(String.format("%.4f", koefisien)).append(" * (").append(sign).append(") * (").append(String.format("%.6f", detMinor)).append(") = ").append(String.format("%.6f", temp)).append("\n\n");
+            steps.append("Kontribusi Kolom ").append(j + 1).append(" = ").append(koefisien).append(" * (").append(sign).append(") * (").append(detMinor).append(") = ").append(temp).append("\n\n");
         }
-        steps.append("Determinan ").append(matrix.getRows()).append("x").append(matrix.getRows()).append(" akhir = ").append(String.format("%.6f", hasil)).append("\n");
+        steps.append("Determinan ").append(matrix.getRows()).append("x").append(matrix.getRows()).append(" akhir = ").append(hasil).append("\n");
         return hasil;
     }
 
@@ -96,7 +96,6 @@ public class Determinan {
         return 0;
     }
 
-    // MSH ADA KESALAHAN DISINI
     public DeterminanResult detOBE(Matrix matrix){
         StringBuilder steps = new StringBuilder();
         Matrix m = matrix.copy();
@@ -106,7 +105,7 @@ public class Determinan {
         steps.append(m.matrixToString(m)).append("\n\n");
 
         // bikin matrix segitiga
-        for (int i=1;i<m.getRows();i++){
+        for (int i=0;i<m.getRows();i++){
             do{
                 int a = firstZeroTotal(m,i);
             
@@ -133,7 +132,7 @@ public class Determinan {
                     for (int j=0;j<i;j++){
                         if (m.get(i,j)!=0){
                             double x = m.get(i, j) / m.get(j, j);
-                            steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" - (").append(String.format("%.4f", x)).append(") * Baris ").append(j+1).append("\n");
+                            steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" - (").append(x).append(") * Baris ").append(j+1).append("\n");
                             m.subtractMultipliedRow(m, i, j, x);
                             steps.append(m.matrixToString(m)).append("\n\n");
                         }
