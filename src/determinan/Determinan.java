@@ -89,6 +89,9 @@ public class Determinan {
             else{
                 n+=1;
             }
+            if (j==matrix.getCols()-1){
+                return n;
+            }
         }
         return 0;
     }
@@ -102,24 +105,58 @@ public class Determinan {
         steps.append("Matriks Awal:\n");
         steps.append(m.matrixToString(m)).append("\n\n");
 
+        // for (int i=0;i<m.getRows();i++){
+        //     int totalZero;
+        //     if (m.get(i,0)==0){
+        //         totalZero=1;
+        //     }
+        //     else{
+        //         totalZero=0;
+        //     }
+
+        //     for (int j=0;j<m.getCols();j++){
+        //         if (j>0 && j==totalZero-1 && m.get(i,j)==0){
+        //             totalZero++;
+        //         }
+
+        //     }
+        // }
+
         // bikin matrix segitiga
-        for (int i=0;i<m.getRows();i++){
-            int a = firstZeroTotal(m,i);
-            if (a>i){
-                steps.append("Tukar baris ").append(i+1).append(" dengan baris ").append(a+1).append("\n");
-                swapRow(m,a,i);
-                steps.append(m.matrixToString(m)).append("\n\n");
-                p++;
-            }
-  
-            else if (a<i){
-                for (int j=0;j<i;j++){
-                    double x = m.get(i, j) / m.get(j, j);
-                    steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" - (").append(String.format("%.4f", x)).append(") * Baris ").append(j+1).append("\n");
-                    m.subtractMultipliedRow(m, i, j, x);
-                    steps.append(m.matrixToString(m)).append("\n\n");
+        for (int i=1;i<m.getRows();i++){
+            do{
+                int a = firstZeroTotal(m,i);
+            
+                if (a==m.getRows()){
+                    steps.append("Terdapat baris yang semuanya berniali 0 sehingga salah satu diagonal utama akan bernilai 0,\n").append("maka Determinan = (-1)^p a'_11 ... a'_nn = 0\n");
+                    return new DeterminanResult(0, steps);
                 }
-            }
+
+                if (m.get(i,i)==0){
+                    int b = firstZeroTotal(m, a);
+                    if (a!=b){
+                        steps.append("Tukar baris ").append(i+1).append(" dengan baris ").append(a+1).append("\n");
+                        swapRow(m,i,a);
+                        steps.append(m.matrixToString(m)).append("\n\n");
+                        p++;
+                    }
+                    else{
+                        steps.append("Terdapat nilai 0 pada diagonal utama sehingga Determinan = (-1)^p a'_11 ... a'_nn = 0\n");
+                        return new DeterminanResult(0, steps);
+                    }
+                }
+    
+                if (a<i){
+                    for (int j=0;j<i;j++){
+                        if (m.get(i,j)!=0){
+                            double x = m.get(i, j) / m.get(j, j);
+                            steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" - (").append(String.format("%.4f", x)).append(") * Baris ").append(j+1).append("\n");
+                            m.subtractMultipliedRow(m, i, j, x);
+                            steps.append(m.matrixToString(m)).append("\n\n");
+                        }
+                    }
+                }
+            } while (firstZeroTotal(m,i)!=i);
         }
 
         steps.append("Didapatkan Matriks Segitiga Bawah:\n");
