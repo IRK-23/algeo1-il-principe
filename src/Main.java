@@ -257,7 +257,7 @@ public class Main {
         System.out.println("=".repeat(55));
     }
     
-    private static void handleDeterminant() {
+    private static void handleDeterminant() throws IOException{
         System.out.println("=====================================================");
         System.out.println("                  DETERMINAN MATRIKS                 ");
         System.out.println("=====================================================\n");
@@ -289,7 +289,7 @@ public class Main {
         else if (inputType == 2) {
             System.out.print("\nMasukkan nama file (contoh: test/spl_case1.txt): ");
             String filename = scanner.nextLine();
-            // matrix = FileHandler.readMatrix(filename); //PR
+            matrix = FileHandler.readMatrix(filename);
             System.out.println("File berhasil dibaca!");
         } 
         else {
@@ -358,7 +358,7 @@ public class Main {
         return matrix;
     }
 
-    private static void handleInverse() {
+    private static void handleInverse() throws IOException{
         System.out.println("=====================================================");
         System.out.println("            MATRIKS BALIKAN (INVERSE)                ");
         System.out.println("=====================================================\n");
@@ -390,7 +390,7 @@ public class Main {
         else if (inputType == 2) {
             System.out.print("\nMasukkan nama file (contoh: test/spl_case1.txt): ");
             String filename = scanner.nextLine();
-            // matrix = FileHandler.readMatrix(filename); //PR
+            matrix = FileHandler.readMatrix(filename);
             System.out.println("File berhasil dibaca!");
         } 
         else {
