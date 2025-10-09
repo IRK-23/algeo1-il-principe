@@ -59,4 +59,37 @@ public class Matrix {
         }
         return sub;
     }
+
+    public void multiplyRow(Matrix matrix, int row, double x){
+        for (int j=0; j<matrix.getCols(); j++){
+            matrix.set(row, j, matrix.get(row, j) * x);
+        }
+    }
+
+    public void subtractMultipliedRow(Matrix matrix, int row1, int row2, double x){
+        for (int j=0; j<matrix.getCols(); j++){
+            matrix.set(row1, j, matrix.get(row1, j) - x * matrix.get(row2, j));
+        }
+    }
+
+    public Matrix matrixTranpos(Matrix matrix){
+        Matrix m = new Matrix(matrix.getRows(), matrix.getCols());
+        for (int i=0;i<m.getRows();i++){
+            for (int j=0;j<m.getCols();j++){
+                m.set(j,i,matrix.get(i,j));
+            }
+        }
+        return m;
+    }
+
+    public String matrixToString(Matrix m) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < m.getRows(); i++) {
+            for (int j = 0; j < m.getCols(); j++) {
+                sb.append(String.format("%10.4f ", m.get(i, j)));
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }
