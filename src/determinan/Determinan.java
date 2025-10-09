@@ -24,11 +24,15 @@ public class Determinan {
         }
         return m;
     }
-    // tambahin kalo elemen yg diambil 0
+
     public double rekursiEkspansiKofaktor(Matrix matrix, StringBuilder steps){
         if (matrix.getRows() == 2){
             steps.append("det(2x2) = (").append(matrix.get(0, 0)).append(" * ").append(matrix.get(1, 1)).append(") - (").append(matrix.get(0, 1)).append(" * ").append(matrix.get(1, 0)).append(") = ").append(detM2x2(matrix)).append("\n");
             return detM2x2(matrix);
+        }
+        else if (matrix.getRows() == 1){
+            steps.append("Determinan = ").append(matrix.get(0, 0)).append("\n");
+            return matrix.get(0,0);
         }
 
         double hasil=0;
