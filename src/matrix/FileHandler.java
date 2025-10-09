@@ -30,7 +30,21 @@ public class FileHandler {
                 
                 try {
                     for (int i = 0; i < values.length; i++) {
-                        row[i] = Double.parseDouble(values[i]);
+                        String val = values[i].replace(",", ".");
+                        if (val.contains("/")) {
+                            String[] parts = val.split("/");
+                            if (parts.length == 2) {
+                                double pembilang = Double.parseDouble(parts[0]);
+                                double penyebut = Double.parseDouble(parts[1]);
+                                row[i] = pembilang/penyebut;
+                            } 
+                            else {
+                                throw new NumberFormatException();
+                            }
+                        } 
+                        else {
+                            row[i] = Double.parseDouble(val);
+                        }
                     }
                     rows.add(row);
                 } catch (NumberFormatException e) {

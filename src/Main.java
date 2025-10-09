@@ -362,8 +362,23 @@ public class Main {
             
             for (int j = 0; j < n; j++) {
                 try {
-                    matrix.set(i, j, Double.parseDouble(values[j]));
-                } catch (NumberFormatException e) {
+                    String val = values[j].replace(",", ".");
+                    if (val.contains("/")) {
+                        String[] parts = val.split("/");
+                        if (parts.length == 2) {
+                            double pembilang = Double.parseDouble(parts[0]);
+                            double penyebut = Double.parseDouble(parts[1]);
+                            matrix.set(i, j, pembilang/penyebut);
+                        } 
+                        else {
+                            throw new NumberFormatException();
+                        }
+                    } 
+                    else {
+                        matrix.set(i, j, Double.parseDouble(val));
+                    }
+                } 
+                catch (NumberFormatException e) {
                     System.out.println("Error: Format angka tidak valid!");
                     i--;
                     break;
