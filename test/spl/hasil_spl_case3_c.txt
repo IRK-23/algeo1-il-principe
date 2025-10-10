@@ -1,0 +1,28 @@
+========================================
+  HASIL PENYELESAIAN SISTEM PERSAMAAN LINIER
+========================================
+
+Metode: Kaidah Cramer (Cramer's Rule)
+
+INPUT (Matriks Augmented):
+    0,0000     1,0000     0,0000     0,0000     1,0000     0,0000     2,0000 
+    0,0000     0,0000     0,0000     1,0000     1,0000     1,0000    -1,0000 
+    0,0000     1,0000     0,0000     0,0000     0,0000     1,0000     1,0000 
+
+========================================
+LANGKAH-LANGKAH PENYELESAIAN:
+========================================
+========================================
+METODE KAIDAH CRAMER
+========================================
+
+ERROR: Metode Cramer hanya untuk sistem n×n
+Ukuran matriks: 3×7
+Dibutuhkan: n×(n+1) untuk matriks augmented [A|b]
+
+========================================
+HASIL:
+========================================
+TIDAK ADA SOLUSI
+Sistem persamaan inkonsisten.
+========================================

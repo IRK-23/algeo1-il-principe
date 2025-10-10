@@ -1,0 +1,826 @@
+========================================
+  HASIL PENYELESAIAN SISTEM PERSAMAAN LINIER
+========================================
+
+Metode: Kaidah Cramer (Cramer's Rule)
+
+INPUT (Matriks Augmented):
+    8,0000     1,0000     3,0000     2,0000     0,0000 
+    2,0000     9,0000    -1,0000    -2,0000     1,0000 
+    1,0000     3,0000     2,0000    -1,0000     2,0000 
+    1,0000     0,0000     6,0000     4,0000     3,0000 
+
+========================================
+LANGKAH-LANGKAH PENYELESAIAN:
+========================================
+========================================
+METODE KAIDAH CRAMER
+========================================
+
+Matriks Koefisien A:
+    8,0000     1,0000     3,0000     2,0000 
+    2,0000     9,0000    -1,0000    -2,0000 
+    1,0000     3,0000     2,0000    -1,0000 
+    1,0000     0,0000     6,0000     4,0000 
+
+Vektor konstanta b:
+b1 = 0,0000
+b2 = 1,0000
+b3 = 2,0000
+b4 = 3,0000
+
+========================================
+LANGKAH 1: Hitung det(A)
+========================================
+
+Ekspansi Matriks 4x4
+Koefisien a11 = 8.0 * Tanda 1.0
+Minor M11:
+    9,0000    -1,0000    -2,0000 
+    3,0000     2,0000    -1,0000 
+    0,0000     6,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 9.0 * Tanda 1.0
+Minor M11:
+    2,0000    -1,0000 
+    6,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 6.0) = 14.0
+Kontribusi Kolom 1 = 9.0 * (1.0) * (14.0) = 126.0
+
+Koefisien a12 = -1.0 * Tanda -1.0
+Minor M12:
+    3,0000    -1,0000 
+    0,0000     4,0000 
+
+det(2x2) = (3.0 * 4.0) - (-1.0 * 0.0) = 12.0
+Kontribusi Kolom 2 = -1.0 * (-1.0) * (12.0) = 12.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    3,0000     2,0000 
+    0,0000     6,0000 
+
+det(2x2) = (3.0 * 6.0) - (2.0 * 0.0) = 18.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (18.0) = -36.0
+
+Determinan 3x3 akhir = 102.0
+Kontribusi Kolom 1 = 8.0 * (1.0) * (102.0) = 816.0
+
+Koefisien a12 = 1.0 * Tanda -1.0
+Minor M12:
+    2,0000    -1,0000    -2,0000 
+    1,0000     2,0000    -1,0000 
+    1,0000     6,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    2,0000    -1,0000 
+    6,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 6.0) = 14.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (14.0) = 28.0
+
+Koefisien a12 = -1.0 * Tanda -1.0
+Minor M12:
+    1,0000    -1,0000 
+    1,0000     4,0000 
+
+det(2x2) = (1.0 * 4.0) - (-1.0 * 1.0) = 5.0
+Kontribusi Kolom 2 = -1.0 * (-1.0) * (5.0) = 5.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    1,0000     2,0000 
+    1,0000     6,0000 
+
+det(2x2) = (1.0 * 6.0) - (2.0 * 1.0) = 4.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (4.0) = -8.0
+
+Determinan 3x3 akhir = 25.0
+Kontribusi Kolom 2 = 1.0 * (-1.0) * (25.0) = -25.0
+
+Koefisien a13 = 3.0 * Tanda 1.0
+Minor M13:
+    2,0000     9,0000    -2,0000 
+    1,0000     3,0000    -1,0000 
+    1,0000     0,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    3,0000    -1,0000 
+    0,0000     4,0000 
+
+det(2x2) = (3.0 * 4.0) - (-1.0 * 0.0) = 12.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (12.0) = 24.0
+
+Koefisien a12 = 9.0 * Tanda -1.0
+Minor M12:
+    1,0000    -1,0000 
+    1,0000     4,0000 
+
+det(2x2) = (1.0 * 4.0) - (-1.0 * 1.0) = 5.0
+Kontribusi Kolom 2 = 9.0 * (-1.0) * (5.0) = -45.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    1,0000     3,0000 
+    1,0000     0,0000 
+
+det(2x2) = (1.0 * 0.0) - (3.0 * 1.0) = -3.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (-3.0) = 6.0
+
+Determinan 3x3 akhir = -15.0
+Kontribusi Kolom 3 = 3.0 * (1.0) * (-15.0) = -45.0
+
+Koefisien a14 = 2.0 * Tanda -1.0
+Minor M14:
+    2,0000     9,0000    -1,0000 
+    1,0000     3,0000     2,0000 
+    1,0000     0,0000     6,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    3,0000     2,0000 
+    0,0000     6,0000 
+
+det(2x2) = (3.0 * 6.0) - (2.0 * 0.0) = 18.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (18.0) = 36.0
+
+Koefisien a12 = 9.0 * Tanda -1.0
+Minor M12:
+    1,0000     2,0000 
+    1,0000     6,0000 
+
+det(2x2) = (1.0 * 6.0) - (2.0 * 1.0) = 4.0
+Kontribusi Kolom 2 = 9.0 * (-1.0) * (4.0) = -36.0
+
+Koefisien a13 = -1.0 * Tanda 1.0
+Minor M13:
+    1,0000     3,0000 
+    1,0000     0,0000 
+
+det(2x2) = (1.0 * 0.0) - (3.0 * 1.0) = -3.0
+Kontribusi Kolom 3 = -1.0 * (1.0) * (-3.0) = 3.0
+
+Determinan 3x3 akhir = 3.0
+Kontribusi Kolom 4 = 2.0 * (-1.0) * (3.0) = -6.0
+
+Determinan 4x4 akhir = 740.0
+
+det(A) = 740,000000
+
+det(A) ≠ 0, maka SPL memiliki SOLUSI UNIK
+
+========================================
+LANGKAH 2: Hitung x1
+========================================
+
+Matriks A1 (kolom 1 diganti dengan vektor b):
+    0,0000     1,0000     3,0000     2,0000 
+    1,0000     9,0000    -1,0000    -2,0000 
+    2,0000     3,0000     2,0000    -1,0000 
+    3,0000     0,0000     6,0000     4,0000 
+
+Ekspansi Matriks 4x4
+Koefisien a11 = 0.0 * Tanda 1.0
+Minor M11:
+    9,0000    -1,0000    -2,0000 
+    3,0000     2,0000    -1,0000 
+    0,0000     6,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 9.0 * Tanda 1.0
+Minor M11:
+    2,0000    -1,0000 
+    6,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 6.0) = 14.0
+Kontribusi Kolom 1 = 9.0 * (1.0) * (14.0) = 126.0
+
+Koefisien a12 = -1.0 * Tanda -1.0
+Minor M12:
+    3,0000    -1,0000 
+    0,0000     4,0000 
+
+det(2x2) = (3.0 * 4.0) - (-1.0 * 0.0) = 12.0
+Kontribusi Kolom 2 = -1.0 * (-1.0) * (12.0) = 12.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    3,0000     2,0000 
+    0,0000     6,0000 
+
+det(2x2) = (3.0 * 6.0) - (2.0 * 0.0) = 18.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (18.0) = -36.0
+
+Determinan 3x3 akhir = 102.0
+Kontribusi Kolom 1 = 0.0 * (1.0) * (102.0) = 0.0
+
+Koefisien a12 = 1.0 * Tanda -1.0
+Minor M12:
+    1,0000    -1,0000    -2,0000 
+    2,0000     2,0000    -1,0000 
+    3,0000     6,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 1.0 * Tanda 1.0
+Minor M11:
+    2,0000    -1,0000 
+    6,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 6.0) = 14.0
+Kontribusi Kolom 1 = 1.0 * (1.0) * (14.0) = 14.0
+
+Koefisien a12 = -1.0 * Tanda -1.0
+Minor M12:
+    2,0000    -1,0000 
+    3,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 3.0) = 11.0
+Kontribusi Kolom 2 = -1.0 * (-1.0) * (11.0) = 11.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    2,0000     2,0000 
+    3,0000     6,0000 
+
+det(2x2) = (2.0 * 6.0) - (2.0 * 3.0) = 6.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (6.0) = -12.0
+
+Determinan 3x3 akhir = 13.0
+Kontribusi Kolom 2 = 1.0 * (-1.0) * (13.0) = -13.0
+
+Koefisien a13 = 3.0 * Tanda 1.0
+Minor M13:
+    1,0000     9,0000    -2,0000 
+    2,0000     3,0000    -1,0000 
+    3,0000     0,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 1.0 * Tanda 1.0
+Minor M11:
+    3,0000    -1,0000 
+    0,0000     4,0000 
+
+det(2x2) = (3.0 * 4.0) - (-1.0 * 0.0) = 12.0
+Kontribusi Kolom 1 = 1.0 * (1.0) * (12.0) = 12.0
+
+Koefisien a12 = 9.0 * Tanda -1.0
+Minor M12:
+    2,0000    -1,0000 
+    3,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 3.0) = 11.0
+Kontribusi Kolom 2 = 9.0 * (-1.0) * (11.0) = -99.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    2,0000     3,0000 
+    3,0000     0,0000 
+
+det(2x2) = (2.0 * 0.0) - (3.0 * 3.0) = -9.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (-9.0) = 18.0
+
+Determinan 3x3 akhir = -69.0
+Kontribusi Kolom 3 = 3.0 * (1.0) * (-69.0) = -207.0
+
+Koefisien a14 = 2.0 * Tanda -1.0
+Minor M14:
+    1,0000     9,0000    -1,0000 
+    2,0000     3,0000     2,0000 
+    3,0000     0,0000     6,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 1.0 * Tanda 1.0
+Minor M11:
+    3,0000     2,0000 
+    0,0000     6,0000 
+
+det(2x2) = (3.0 * 6.0) - (2.0 * 0.0) = 18.0
+Kontribusi Kolom 1 = 1.0 * (1.0) * (18.0) = 18.0
+
+Koefisien a12 = 9.0 * Tanda -1.0
+Minor M12:
+    2,0000     2,0000 
+    3,0000     6,0000 
+
+det(2x2) = (2.0 * 6.0) - (2.0 * 3.0) = 6.0
+Kontribusi Kolom 2 = 9.0 * (-1.0) * (6.0) = -54.0
+
+Koefisien a13 = -1.0 * Tanda 1.0
+Minor M13:
+    2,0000     3,0000 
+    3,0000     0,0000 
+
+det(2x2) = (2.0 * 0.0) - (3.0 * 3.0) = -9.0
+Kontribusi Kolom 3 = -1.0 * (1.0) * (-9.0) = 9.0
+
+Determinan 3x3 akhir = -27.0
+Kontribusi Kolom 4 = 2.0 * (-1.0) * (-27.0) = 54.0
+
+Determinan 4x4 akhir = -166.0
+
+det(A1) = -166,000000
+
+x1 = det(A1) / det(A)
+x1 = -166,000000 / 740,000000
+x1 = -0,224324
+
+========================================
+LANGKAH 3: Hitung x2
+========================================
+
+Matriks A2 (kolom 2 diganti dengan vektor b):
+    8,0000     0,0000     3,0000     2,0000 
+    2,0000     1,0000    -1,0000    -2,0000 
+    1,0000     2,0000     2,0000    -1,0000 
+    1,0000     3,0000     6,0000     4,0000 
+
+Ekspansi Matriks 4x4
+Koefisien a11 = 8.0 * Tanda 1.0
+Minor M11:
+    1,0000    -1,0000    -2,0000 
+    2,0000     2,0000    -1,0000 
+    3,0000     6,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 1.0 * Tanda 1.0
+Minor M11:
+    2,0000    -1,0000 
+    6,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 6.0) = 14.0
+Kontribusi Kolom 1 = 1.0 * (1.0) * (14.0) = 14.0
+
+Koefisien a12 = -1.0 * Tanda -1.0
+Minor M12:
+    2,0000    -1,0000 
+    3,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 3.0) = 11.0
+Kontribusi Kolom 2 = -1.0 * (-1.0) * (11.0) = 11.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    2,0000     2,0000 
+    3,0000     6,0000 
+
+det(2x2) = (2.0 * 6.0) - (2.0 * 3.0) = 6.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (6.0) = -12.0
+
+Determinan 3x3 akhir = 13.0
+Kontribusi Kolom 1 = 8.0 * (1.0) * (13.0) = 104.0
+
+Koefisien a12 = 0.0 * Tanda -1.0
+Minor M12:
+    2,0000    -1,0000    -2,0000 
+    1,0000     2,0000    -1,0000 
+    1,0000     6,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    2,0000    -1,0000 
+    6,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 6.0) = 14.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (14.0) = 28.0
+
+Koefisien a12 = -1.0 * Tanda -1.0
+Minor M12:
+    1,0000    -1,0000 
+    1,0000     4,0000 
+
+det(2x2) = (1.0 * 4.0) - (-1.0 * 1.0) = 5.0
+Kontribusi Kolom 2 = -1.0 * (-1.0) * (5.0) = 5.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    1,0000     2,0000 
+    1,0000     6,0000 
+
+det(2x2) = (1.0 * 6.0) - (2.0 * 1.0) = 4.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (4.0) = -8.0
+
+Determinan 3x3 akhir = 25.0
+Kontribusi Kolom 2 = 0.0 * (-1.0) * (25.0) = -0.0
+
+Koefisien a13 = 3.0 * Tanda 1.0
+Minor M13:
+    2,0000     1,0000    -2,0000 
+    1,0000     2,0000    -1,0000 
+    1,0000     3,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    2,0000    -1,0000 
+    3,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 3.0) = 11.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (11.0) = 22.0
+
+Koefisien a12 = 1.0 * Tanda -1.0
+Minor M12:
+    1,0000    -1,0000 
+    1,0000     4,0000 
+
+det(2x2) = (1.0 * 4.0) - (-1.0 * 1.0) = 5.0
+Kontribusi Kolom 2 = 1.0 * (-1.0) * (5.0) = -5.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    1,0000     2,0000 
+    1,0000     3,0000 
+
+det(2x2) = (1.0 * 3.0) - (2.0 * 1.0) = 1.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (1.0) = -2.0
+
+Determinan 3x3 akhir = 15.0
+Kontribusi Kolom 3 = 3.0 * (1.0) * (15.0) = 45.0
+
+Koefisien a14 = 2.0 * Tanda -1.0
+Minor M14:
+    2,0000     1,0000    -1,0000 
+    1,0000     2,0000     2,0000 
+    1,0000     3,0000     6,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    2,0000     2,0000 
+    3,0000     6,0000 
+
+det(2x2) = (2.0 * 6.0) - (2.0 * 3.0) = 6.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (6.0) = 12.0
+
+Koefisien a12 = 1.0 * Tanda -1.0
+Minor M12:
+    1,0000     2,0000 
+    1,0000     6,0000 
+
+det(2x2) = (1.0 * 6.0) - (2.0 * 1.0) = 4.0
+Kontribusi Kolom 2 = 1.0 * (-1.0) * (4.0) = -4.0
+
+Koefisien a13 = -1.0 * Tanda 1.0
+Minor M13:
+    1,0000     2,0000 
+    1,0000     3,0000 
+
+det(2x2) = (1.0 * 3.0) - (2.0 * 1.0) = 1.0
+Kontribusi Kolom 3 = -1.0 * (1.0) * (1.0) = -1.0
+
+Determinan 3x3 akhir = 7.0
+Kontribusi Kolom 4 = 2.0 * (-1.0) * (7.0) = -14.0
+
+Determinan 4x4 akhir = 135.0
+
+det(A2) = 135,000000
+
+x2 = det(A2) / det(A)
+x2 = 135,000000 / 740,000000
+x2 = 0,182432
+
+========================================
+LANGKAH 4: Hitung x3
+========================================
+
+Matriks A3 (kolom 3 diganti dengan vektor b):
+    8,0000     1,0000     0,0000     2,0000 
+    2,0000     9,0000     1,0000    -2,0000 
+    1,0000     3,0000     2,0000    -1,0000 
+    1,0000     0,0000     3,0000     4,0000 
+
+Ekspansi Matriks 4x4
+Koefisien a11 = 8.0 * Tanda 1.0
+Minor M11:
+    9,0000     1,0000    -2,0000 
+    3,0000     2,0000    -1,0000 
+    0,0000     3,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 9.0 * Tanda 1.0
+Minor M11:
+    2,0000    -1,0000 
+    3,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 3.0) = 11.0
+Kontribusi Kolom 1 = 9.0 * (1.0) * (11.0) = 99.0
+
+Koefisien a12 = 1.0 * Tanda -1.0
+Minor M12:
+    3,0000    -1,0000 
+    0,0000     4,0000 
+
+det(2x2) = (3.0 * 4.0) - (-1.0 * 0.0) = 12.0
+Kontribusi Kolom 2 = 1.0 * (-1.0) * (12.0) = -12.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    3,0000     2,0000 
+    0,0000     3,0000 
+
+det(2x2) = (3.0 * 3.0) - (2.0 * 0.0) = 9.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (9.0) = -18.0
+
+Determinan 3x3 akhir = 69.0
+Kontribusi Kolom 1 = 8.0 * (1.0) * (69.0) = 552.0
+
+Koefisien a12 = 1.0 * Tanda -1.0
+Minor M12:
+    2,0000     1,0000    -2,0000 
+    1,0000     2,0000    -1,0000 
+    1,0000     3,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    2,0000    -1,0000 
+    3,0000     4,0000 
+
+det(2x2) = (2.0 * 4.0) - (-1.0 * 3.0) = 11.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (11.0) = 22.0
+
+Koefisien a12 = 1.0 * Tanda -1.0
+Minor M12:
+    1,0000    -1,0000 
+    1,0000     4,0000 
+
+det(2x2) = (1.0 * 4.0) - (-1.0 * 1.0) = 5.0
+Kontribusi Kolom 2 = 1.0 * (-1.0) * (5.0) = -5.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    1,0000     2,0000 
+    1,0000     3,0000 
+
+det(2x2) = (1.0 * 3.0) - (2.0 * 1.0) = 1.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (1.0) = -2.0
+
+Determinan 3x3 akhir = 15.0
+Kontribusi Kolom 2 = 1.0 * (-1.0) * (15.0) = -15.0
+
+Koefisien a13 = 0.0 * Tanda 1.0
+Minor M13:
+    2,0000     9,0000    -2,0000 
+    1,0000     3,0000    -1,0000 
+    1,0000     0,0000     4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    3,0000    -1,0000 
+    0,0000     4,0000 
+
+det(2x2) = (3.0 * 4.0) - (-1.0 * 0.0) = 12.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (12.0) = 24.0
+
+Koefisien a12 = 9.0 * Tanda -1.0
+Minor M12:
+    1,0000    -1,0000 
+    1,0000     4,0000 
+
+det(2x2) = (1.0 * 4.0) - (-1.0 * 1.0) = 5.0
+Kontribusi Kolom 2 = 9.0 * (-1.0) * (5.0) = -45.0
+
+Koefisien a13 = -2.0 * Tanda 1.0
+Minor M13:
+    1,0000     3,0000 
+    1,0000     0,0000 
+
+det(2x2) = (1.0 * 0.0) - (3.0 * 1.0) = -3.0
+Kontribusi Kolom 3 = -2.0 * (1.0) * (-3.0) = 6.0
+
+Determinan 3x3 akhir = -15.0
+Kontribusi Kolom 3 = 0.0 * (1.0) * (-15.0) = -0.0
+
+Koefisien a14 = 2.0 * Tanda -1.0
+Minor M14:
+    2,0000     9,0000     1,0000 
+    1,0000     3,0000     2,0000 
+    1,0000     0,0000     3,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    3,0000     2,0000 
+    0,0000     3,0000 
+
+det(2x2) = (3.0 * 3.0) - (2.0 * 0.0) = 9.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (9.0) = 18.0
+
+Koefisien a12 = 9.0 * Tanda -1.0
+Minor M12:
+    1,0000     2,0000 
+    1,0000     3,0000 
+
+det(2x2) = (1.0 * 3.0) - (2.0 * 1.0) = 1.0
+Kontribusi Kolom 2 = 9.0 * (-1.0) * (1.0) = -9.0
+
+Koefisien a13 = 1.0 * Tanda 1.0
+Minor M13:
+    1,0000     3,0000 
+    1,0000     0,0000 
+
+det(2x2) = (1.0 * 0.0) - (3.0 * 1.0) = -3.0
+Kontribusi Kolom 3 = 1.0 * (1.0) * (-3.0) = -3.0
+
+Determinan 3x3 akhir = 6.0
+Kontribusi Kolom 4 = 2.0 * (-1.0) * (6.0) = -12.0
+
+Determinan 4x4 akhir = 525.0
+
+det(A3) = 525,000000
+
+x3 = det(A3) / det(A)
+x3 = 525,000000 / 740,000000
+x3 = 0,709459
+
+========================================
+LANGKAH 5: Hitung x4
+========================================
+
+Matriks A4 (kolom 4 diganti dengan vektor b):
+    8,0000     1,0000     3,0000     0,0000 
+    2,0000     9,0000    -1,0000     1,0000 
+    1,0000     3,0000     2,0000     2,0000 
+    1,0000     0,0000     6,0000     3,0000 
+
+Ekspansi Matriks 4x4
+Koefisien a11 = 8.0 * Tanda 1.0
+Minor M11:
+    9,0000    -1,0000     1,0000 
+    3,0000     2,0000     2,0000 
+    0,0000     6,0000     3,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 9.0 * Tanda 1.0
+Minor M11:
+    2,0000     2,0000 
+    6,0000     3,0000 
+
+det(2x2) = (2.0 * 3.0) - (2.0 * 6.0) = -6.0
+Kontribusi Kolom 1 = 9.0 * (1.0) * (-6.0) = -54.0
+
+Koefisien a12 = -1.0 * Tanda -1.0
+Minor M12:
+    3,0000     2,0000 
+    0,0000     3,0000 
+
+det(2x2) = (3.0 * 3.0) - (2.0 * 0.0) = 9.0
+Kontribusi Kolom 2 = -1.0 * (-1.0) * (9.0) = 9.0
+
+Koefisien a13 = 1.0 * Tanda 1.0
+Minor M13:
+    3,0000     2,0000 
+    0,0000     6,0000 
+
+det(2x2) = (3.0 * 6.0) - (2.0 * 0.0) = 18.0
+Kontribusi Kolom 3 = 1.0 * (1.0) * (18.0) = 18.0
+
+Determinan 3x3 akhir = -27.0
+Kontribusi Kolom 1 = 8.0 * (1.0) * (-27.0) = -216.0
+
+Koefisien a12 = 1.0 * Tanda -1.0
+Minor M12:
+    2,0000    -1,0000     1,0000 
+    1,0000     2,0000     2,0000 
+    1,0000     6,0000     3,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    2,0000     2,0000 
+    6,0000     3,0000 
+
+det(2x2) = (2.0 * 3.0) - (2.0 * 6.0) = -6.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (-6.0) = -12.0
+
+Koefisien a12 = -1.0 * Tanda -1.0
+Minor M12:
+    1,0000     2,0000 
+    1,0000     3,0000 
+
+det(2x2) = (1.0 * 3.0) - (2.0 * 1.0) = 1.0
+Kontribusi Kolom 2 = -1.0 * (-1.0) * (1.0) = 1.0
+
+Koefisien a13 = 1.0 * Tanda 1.0
+Minor M13:
+    1,0000     2,0000 
+    1,0000     6,0000 
+
+det(2x2) = (1.0 * 6.0) - (2.0 * 1.0) = 4.0
+Kontribusi Kolom 3 = 1.0 * (1.0) * (4.0) = 4.0
+
+Determinan 3x3 akhir = -7.0
+Kontribusi Kolom 2 = 1.0 * (-1.0) * (-7.0) = 7.0
+
+Koefisien a13 = 3.0 * Tanda 1.0
+Minor M13:
+    2,0000     9,0000     1,0000 
+    1,0000     3,0000     2,0000 
+    1,0000     0,0000     3,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    3,0000     2,0000 
+    0,0000     3,0000 
+
+det(2x2) = (3.0 * 3.0) - (2.0 * 0.0) = 9.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (9.0) = 18.0
+
+Koefisien a12 = 9.0 * Tanda -1.0
+Minor M12:
+    1,0000     2,0000 
+    1,0000     3,0000 
+
+det(2x2) = (1.0 * 3.0) - (2.0 * 1.0) = 1.0
+Kontribusi Kolom 2 = 9.0 * (-1.0) * (1.0) = -9.0
+
+Koefisien a13 = 1.0 * Tanda 1.0
+Minor M13:
+    1,0000     3,0000 
+    1,0000     0,0000 
+
+det(2x2) = (1.0 * 0.0) - (3.0 * 1.0) = -3.0
+Kontribusi Kolom 3 = 1.0 * (1.0) * (-3.0) = -3.0
+
+Determinan 3x3 akhir = 6.0
+Kontribusi Kolom 3 = 3.0 * (1.0) * (6.0) = 18.0
+
+Koefisien a14 = 0.0 * Tanda -1.0
+Minor M14:
+    2,0000     9,0000    -1,0000 
+    1,0000     3,0000     2,0000 
+    1,0000     0,0000     6,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    3,0000     2,0000 
+    0,0000     6,0000 
+
+det(2x2) = (3.0 * 6.0) - (2.0 * 0.0) = 18.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (18.0) = 36.0
+
+Koefisien a12 = 9.0 * Tanda -1.0
+Minor M12:
+    1,0000     2,0000 
+    1,0000     6,0000 
+
+det(2x2) = (1.0 * 6.0) - (2.0 * 1.0) = 4.0
+Kontribusi Kolom 2 = 9.0 * (-1.0) * (4.0) = -36.0
+
+Koefisien a13 = -1.0 * Tanda 1.0
+Minor M13:
+    1,0000     3,0000 
+    1,0000     0,0000 
+
+det(2x2) = (1.0 * 0.0) - (3.0 * 1.0) = -3.0
+Kontribusi Kolom 3 = -1.0 * (1.0) * (-3.0) = 3.0
+
+Determinan 3x3 akhir = 3.0
+Kontribusi Kolom 4 = 0.0 * (-1.0) * (3.0) = -0.0
+
+Determinan 4x4 akhir = -191.0
+
+det(A4) = -191,000000
+
+x4 = det(A4) / det(A)
+x4 = -191,000000 / 740,000000
+x4 = -0,258108
+
+========================================
+HASIL AKHIR
+========================================
+Solusi Unik:
+x1 = -0,224324
+x2 = 0,182432
+x3 = 0,709459
+x4 = -0,258108
+
+========================================
+VERIFIKASI
+========================================
+Persamaan 1: -0,000000 ≈ 0,000000 (selisih: 3,33e-16)
+Persamaan 2: 1,000000 ≈ 1,000000 (selisih: 1,11e-16)
+Persamaan 3: 2,000000 ≈ 2,000000 (selisih: 2,22e-16)
+Persamaan 4: 3,000000 ≈ 3,000000 (selisih: 0,00e+00)
+
+ Verifikasi BERHASIL - Solusi benar!
+
+========================================
+HASIL:
+========================================
+Solusi Tunggal:
+x1 = -0,224324
+x2 = 0,182432
+x3 = 0,709459
+x4 = -0,258108
+========================================

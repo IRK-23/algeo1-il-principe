@@ -1,0 +1,26 @@
+========================================
+  HASIL PENYELESAIAN SISTEM PERSAMAAN LINIER
+========================================
+
+Metode: Metode Matriks Balikan (Invers)
+
+INPUT (Matriks Augmented):
+    2,0000     0,0000     8,0000     0,0000     8,0000 
+    0,0000     1,0000     0,0000     4,0000     4,0000 
+   -4,0000     0,0000     6,0000     0,0000     6,0000 
+    0,0000    -2,0000     0,0000     3,0000    -1,0000 
+    2,0000     0,0000    -4,0000     0,0000    -4,0000 
+    0,0000     1,0000     0,0000    -2,0000     0,0000 
+
+========================================
+LANGKAH-LANGKAH PENYELESAIAN:
+========================================
+Error: Matriks augmented tidak valid untuk metode invers.
+Metode invers hanya dapat digunakan untuk sistem SPL n x n.
+
+========================================
+HASIL:
+========================================
+TIDAK ADA SOLUSI
+Sistem persamaan inkonsisten.
+========================================
