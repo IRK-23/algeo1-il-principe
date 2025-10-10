@@ -1,0 +1,47 @@
+========================================
+  HASIL PENYELESAIAN SISTEM PERSAMAAN LINIER
+========================================
+
+Metode: Metode Matriks Balikan (Invers)
+
+INPUT (Matriks Augmented):
+    1,0000    -1,0000     2,0000    -1,0000    -1,0000 
+    2,0000     1,0000    -2,0000    -2,0000    -2,0000 
+   -1,0000     2,0000    -4,0000     1,0000     1,0000 
+    3,0000     0,0000     0,0000    -3,0000    -3,0000 
+
+========================================
+LANGKAH-LANGKAH PENYELESAIAN:
+========================================
+=== METODE MATRIKS BALIKAN (INVERS) ===
+
+Menyelesaikan SPL Ax = b dengan rumus x = A^(-1)b
+
+Memisahkan matriks koefisien A dan vektor konstanta b:
+Matriks A:
+    1,0000    -1,0000     2,0000    -1,0000 
+    2,0000     1,0000    -2,0000    -2,0000 
+   -1,0000     2,0000    -4,0000     1,0000 
+    3,0000     0,0000     0,0000    -3,0000 
+
+Vektor b:
+-1,000000
+-2,000000
+1,000000
+-3,000000
+
+Menghitung A^(-1) menggunakan metode adjoin:
+
+Hitung determinan matriks
+Determinan det(A) = 0,000000
+Determinan nol. Matriks tidak memiliki invers.
+
+Matriks A tidak memiliki invers (det(A) = 0).
+Sistem persamaan tidak memiliki solusi unik atau tidak konsisten.
+
+========================================
+HASIL:
+========================================
+TIDAK ADA SOLUSI
+Sistem persamaan inkonsisten.
+========================================

@@ -1,0 +1,74 @@
+========================================
+  HASIL PENYELESAIAN SISTEM PERSAMAAN LINIER
+========================================
+
+Metode: Metode Matriks Balikan (Invers)
+
+INPUT (Matriks Augmented):
+ -120,0000    60,0000     0,0000 -1300,0000 
+   40,0000   -80,0000     0,0000     0,0000 
+   80,0000    20,0000  -150,0000  -200,0000 
+
+========================================
+LANGKAH-LANGKAH PENYELESAIAN:
+========================================
+=== METODE MATRIKS BALIKAN (INVERS) ===
+
+Menyelesaikan SPL Ax = b dengan rumus x = A^(-1)b
+
+Memisahkan matriks koefisien A dan vektor konstanta b:
+Matriks A:
+ -120,0000    60,0000     0,0000 
+   40,0000   -80,0000     0,0000 
+   80,0000    20,0000  -150,0000 
+
+Vektor b:
+-1300,000000
+0,000000
+-200,000000
+
+Menghitung A^(-1) menggunakan metode adjoin:
+
+Hitung determinan matriks
+Determinan det(A) = -1080000,000000
+Hitung matriks kofaktor
+Hasil matriks kofaktor:
+12000,0000  6000,0000  7200,0000 
+ 9000,0000 18000,0000  7200,0000 
+    0,0000    -0,0000  7200,0000 
+
+Hitung matriks adjoin (transpos matriks kofaktor)
+Hasil matriks adjoin:
+12000,0000  9000,0000     0,0000 
+ 6000,0000 18000,0000    -0,0000 
+ 7200,0000  7200,0000  7200,0000 
+
+Matriks invers = (1/det(A)) * Adj(A))
+Hasil matriks invers:
+   -0,0111    -0,0083    -0,0000 
+   -0,0056    -0,0167     0,0000 
+   -0,0067    -0,0067    -0,0067 
+
+
+Menghitung solusi x = A^(-1)b:
+
+Perkalian matriks A^(-1) dengan vektor b:
+x1 = -0,011111 * -1300,000000 + -0,008333 * 0,000000 - -0,000000 * 200,000000 = 14,444444
+x2 = -0,005556 * -1300,000000 + -0,016667 * 0,000000 - 0,000000 * 200,000000 = 7,222222
+x3 = -0,006667 * -1300,000000 + -0,006667 * 0,000000 - -0,006667 * 200,000000 = 10,000000
+
+
+=== SOLUSI AKHIR ===
+x1 = 14,444444
+x2 = 7,222222
+x3 = 10,000000
+
+
+========================================
+HASIL:
+========================================
+Solusi Tunggal:
+x1 = 14,444444
+x2 = 7,222222
+x3 = 10,000000
+========================================

@@ -1,0 +1,196 @@
+========================================
+  HASIL PENYELESAIAN SISTEM PERSAMAAN LINIER
+========================================
+
+Metode: Kaidah Cramer (Cramer's Rule)
+
+INPUT (Matriks Augmented):
+    1,0000     1,0000    -1,0000    -1,0000     1,0000 
+    2,0000     5,0000    -7,0000    -5,0000    -2,0000 
+    2,0000    -1,0000     1,0000     3,0000     4,0000 
+    5,0000     2,0000    -4,0000     2,0000     6,0000 
+
+========================================
+LANGKAH-LANGKAH PENYELESAIAN:
+========================================
+========================================
+METODE KAIDAH CRAMER
+========================================
+
+Matriks Koefisien A:
+    1,0000     1,0000    -1,0000    -1,0000 
+    2,0000     5,0000    -7,0000    -5,0000 
+    2,0000    -1,0000     1,0000     3,0000 
+    5,0000     2,0000    -4,0000     2,0000 
+
+Vektor konstanta b:
+b1 = 1,0000
+b2 = -2,0000
+b3 = 4,0000
+b4 = 6,0000
+
+========================================
+LANGKAH 1: Hitung det(A)
+========================================
+
+Ekspansi Matriks 4x4
+Koefisien a11 = 1.0 * Tanda 1.0
+Minor M11:
+    5,0000    -7,0000    -5,0000 
+   -1,0000     1,0000     3,0000 
+    2,0000    -4,0000     2,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 5.0 * Tanda 1.0
+Minor M11:
+    1,0000     3,0000 
+   -4,0000     2,0000 
+
+det(2x2) = (1.0 * 2.0) - (3.0 * -4.0) = 14.0
+Kontribusi Kolom 1 = 5.0 * (1.0) * (14.0) = 70.0
+
+Koefisien a12 = -7.0 * Tanda -1.0
+Minor M12:
+   -1,0000     3,0000 
+    2,0000     2,0000 
+
+det(2x2) = (-1.0 * 2.0) - (3.0 * 2.0) = -8.0
+Kontribusi Kolom 2 = -7.0 * (-1.0) * (-8.0) = -56.0
+
+Koefisien a13 = -5.0 * Tanda 1.0
+Minor M13:
+   -1,0000     1,0000 
+    2,0000    -4,0000 
+
+det(2x2) = (-1.0 * -4.0) - (1.0 * 2.0) = 2.0
+Kontribusi Kolom 3 = -5.0 * (1.0) * (2.0) = -10.0
+
+Determinan 3x3 akhir = 4.0
+Kontribusi Kolom 1 = 1.0 * (1.0) * (4.0) = 4.0
+
+Koefisien a12 = 1.0 * Tanda -1.0
+Minor M12:
+    2,0000    -7,0000    -5,0000 
+    2,0000     1,0000     3,0000 
+    5,0000    -4,0000     2,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+    1,0000     3,0000 
+   -4,0000     2,0000 
+
+det(2x2) = (1.0 * 2.0) - (3.0 * -4.0) = 14.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (14.0) = 28.0
+
+Koefisien a12 = -7.0 * Tanda -1.0
+Minor M12:
+    2,0000     3,0000 
+    5,0000     2,0000 
+
+det(2x2) = (2.0 * 2.0) - (3.0 * 5.0) = -11.0
+Kontribusi Kolom 2 = -7.0 * (-1.0) * (-11.0) = -77.0
+
+Koefisien a13 = -5.0 * Tanda 1.0
+Minor M13:
+    2,0000     1,0000 
+    5,0000    -4,0000 
+
+det(2x2) = (2.0 * -4.0) - (1.0 * 5.0) = -13.0
+Kontribusi Kolom 3 = -5.0 * (1.0) * (-13.0) = 65.0
+
+Determinan 3x3 akhir = 16.0
+Kontribusi Kolom 2 = 1.0 * (-1.0) * (16.0) = -16.0
+
+Koefisien a13 = -1.0 * Tanda 1.0
+Minor M13:
+    2,0000     5,0000    -5,0000 
+    2,0000    -1,0000     3,0000 
+    5,0000     2,0000     2,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+   -1,0000     3,0000 
+    2,0000     2,0000 
+
+det(2x2) = (-1.0 * 2.0) - (3.0 * 2.0) = -8.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (-8.0) = -16.0
+
+Koefisien a12 = 5.0 * Tanda -1.0
+Minor M12:
+    2,0000     3,0000 
+    5,0000     2,0000 
+
+det(2x2) = (2.0 * 2.0) - (3.0 * 5.0) = -11.0
+Kontribusi Kolom 2 = 5.0 * (-1.0) * (-11.0) = 55.0
+
+Koefisien a13 = -5.0 * Tanda 1.0
+Minor M13:
+    2,0000    -1,0000 
+    5,0000     2,0000 
+
+det(2x2) = (2.0 * 2.0) - (-1.0 * 5.0) = 9.0
+Kontribusi Kolom 3 = -5.0 * (1.0) * (9.0) = -45.0
+
+Determinan 3x3 akhir = -6.0
+Kontribusi Kolom 3 = -1.0 * (1.0) * (-6.0) = 6.0
+
+Koefisien a14 = -1.0 * Tanda -1.0
+Minor M14:
+    2,0000     5,0000    -7,0000 
+    2,0000    -1,0000     1,0000 
+    5,0000     2,0000    -4,0000 
+
+Ekspansi Matriks 3x3
+Koefisien a11 = 2.0 * Tanda 1.0
+Minor M11:
+   -1,0000     1,0000 
+    2,0000    -4,0000 
+
+det(2x2) = (-1.0 * -4.0) - (1.0 * 2.0) = 2.0
+Kontribusi Kolom 1 = 2.0 * (1.0) * (2.0) = 4.0
+
+Koefisien a12 = 5.0 * Tanda -1.0
+Minor M12:
+    2,0000     1,0000 
+    5,0000    -4,0000 
+
+det(2x2) = (2.0 * -4.0) - (1.0 * 5.0) = -13.0
+Kontribusi Kolom 2 = 5.0 * (-1.0) * (-13.0) = 65.0
+
+Koefisien a13 = -7.0 * Tanda 1.0
+Minor M13:
+    2,0000    -1,0000 
+    5,0000     2,0000 
+
+det(2x2) = (2.0 * 2.0) - (-1.0 * 5.0) = 9.0
+Kontribusi Kolom 3 = -7.0 * (1.0) * (9.0) = -63.0
+
+Determinan 3x3 akhir = 6.0
+Kontribusi Kolom 4 = -1.0 * (-1.0) * (6.0) = 6.0
+
+Determinan 4x4 akhir = 0.0
+
+det(A) = 0,000000
+
+========================================
+KESIMPULAN
+========================================
+det(A) = 0
+Matriks A adalah SINGULAR
+
+Kaidah Cramer:
+Jika det(A) = 0, maka SPL tidak memiliki solusi unik.
+SPL mungkin memiliki:
+  - Tidak ada solusi (inkonsisten), atau
+  - Tak hingga banyak solusi
+
+Gunakan metode eliminasi Gauss untuk menentukan tipe solusi.
+
+========================================
+HASIL:
+========================================
+TIDAK ADA SOLUSI
+Sistem persamaan inkonsisten.
+========================================
