@@ -89,6 +89,6 @@ Solusi parametrik:
 x1 = -1,0000 + 1,0000*x4
 x2 = 0,0000 + 2,0000*x3
 x3 = t3 (parameter bebas)
-x4 = t4 (parameter bebas)
+    x4 = t4 (parameter bebas)
 
 ========================================
