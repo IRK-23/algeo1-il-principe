@@ -128,15 +128,15 @@ public class Main {
             case 2:
                 solver = new GaussJordan();
                 break;
-            //case 3:
-              //  solver = new CramerRule();
-                //break;
-            //case 4:
-                //solver = new InverseMatrix();
-                //break;
+            case 3:
+                 solver = new CramerRule();
+                 break;
+            case 4:
+                 solver = new InversMethod();
+                 break;
         }
         
-        if (solver != null) {
+       if (solver != null) {
             System.out.println("\n" + "=".repeat(55));
             System.out.println("Memproses dengan metode: " + solver.getMethodName());
             System.out.println("=".repeat(55) + "\n");
@@ -179,7 +179,6 @@ public class Main {
         }
     }
 
-    
     private static Matrix inputMatrixFromKeyboard() {
         System.out.println();
         System.out.println("=====================================================");
@@ -213,7 +212,7 @@ public class Main {
                     matrix.set(i, j, Double.parseDouble(values[j]));
                 } catch (NumberFormatException e) {
                     System.out.println("Error: Format angka tidak valid!");
-                    i--;
+                    i--; 
                     break;
                 }
             }
