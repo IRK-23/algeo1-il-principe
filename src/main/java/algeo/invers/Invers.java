@@ -147,7 +147,7 @@ public class Invers {
             }
         }
 
-        steps.append("Didapatkan Matriks Invers:\n");
+        steps.append("Hasil Invers Matriks:\n");
         steps.append(invers.matrixToString(invers)).append("\n\n");
         return new InversResult(invers, steps);
     }

@@ -1,6 +1,6 @@
 package algeo.determinan;
 import algeo.matrix.Matrix;
-import java.lang.Math;
+
 
 public class Determinan { 
     public double detM2x2(Matrix matrix){
@@ -24,11 +24,15 @@ public class Determinan {
         }
         return m;
     }
-    // tambahin kalo elemen yg diambil 0
+
     public double rekursiEkspansiKofaktor(Matrix matrix, StringBuilder steps){
         if (matrix.getRows() == 2){
             steps.append("det(2x2) = (").append(matrix.get(0, 0)).append(" * ").append(matrix.get(1, 1)).append(") - (").append(matrix.get(0, 1)).append(" * ").append(matrix.get(1, 0)).append(") = ").append(detM2x2(matrix)).append("\n");
             return detM2x2(matrix);
+        }
+        else if (matrix.getRows() == 1){
+            steps.append("Determinan = ").append(matrix.get(0, 0)).append("\n");
+            return matrix.get(0,0);
         }
 
         double hasil=0;
@@ -61,7 +65,7 @@ public class Determinan {
     public DeterminanResult detEkspansiKofaktor(Matrix matrix){
         StringBuilder steps = new StringBuilder();
         
-        steps.append("Menghitung Determinan dengan Ekspansi Kofaktor pada Baris Pertama\n");
+        steps.append("Metode: Ekspansi Kofaktor pada Baris Pertama\n");
         steps.append("Matriks Awal:\n");
         steps.append(matrix.matrixToString(matrix)).append("\n\n");
         
@@ -101,6 +105,7 @@ public class Determinan {
         Matrix m = matrix.copy();
         int p = 0;
 
+        steps.append("Metode: Reduksi Baris (OBE)\n");
         steps.append("Matriks Awal:\n");
         steps.append(m.matrixToString(m)).append("\n\n");
 
@@ -110,7 +115,7 @@ public class Determinan {
                 int a = firstZeroTotal(m,i);
             
                 if (a==m.getRows()){
-                    steps.append("Terdapat baris yang semuanya berniali 0 sehingga salah satu diagonal utama akan bernilai 0,\n").append("maka Determinan = (-1)^p a'_11 ... a'_nn = 0\n");
+                    steps.append("Terdapat baris yang semuanya berniali 0 sehingga salah satu diagonal utama akan bernilai 0, maka\nDeterminan = (-1)^p a'_11 ... a'_nn = 0\n");
                     return new DeterminanResult(0, steps);
                 }
 
@@ -123,7 +128,12 @@ public class Determinan {
                         p++;
                     }
                     else{
-                        steps.append("Terdapat nilai 0 pada diagonal utama sehingga Determinan = (-1)^p a'_11 ... a'_nn = 0\n");
+                        if (a>0){
+                            steps.append("Tukar baris ").append(i+1).append(" dengan baris ").append(a).append("\n");
+                            swapRow(m,i,a-1);
+                            steps.append(m.matrixToString(m)).append("\n\n");
+                        }
+                        steps.append("Terdapat nilai 0 pada diagonal utama sehingga\nDeterminan = (-1)^p a'_11 ... a'_nn = 0\n");
                         return new DeterminanResult(0, steps);
                     }
                 }
@@ -146,7 +156,13 @@ public class Determinan {
         steps.append("Jumlah pertukaran baris: ").append(p).append("\n");
 
         // hitung determinan
-        double det = Math.pow(-1,p);
+        double det;
+        if (p%2==1){
+            det = -1;
+        }
+        else{
+            det = 1;
+        }
         steps.append("Determinan = (-1)^").append(p);
 
         for (int i=0; i<m.getRows(); i++){

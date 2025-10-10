@@ -3,6 +3,9 @@ package algeo.matrix;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import algeo.determinan.DeterminanResult;
+import algeo.invers.InversResult;
 import algeo.spl.SPLResult;
 
 public class FileHandler {
@@ -182,5 +185,109 @@ public class FileHandler {
         }
     }
 
+    
+    public static void writeInversOutput(String filename, InversResult result, Matrix input) throws IOException {
+        BufferedWriter bw = null;
+        
+        try {
+            bw = new BufferedWriter(new FileWriter(filename));
+
+            bw.write("========================================");
+            bw.newLine();
+            bw.write("  HASIL PENYELESAIAN INVERS MATRIKS");
+            bw.newLine();
+            bw.write("========================================");
+            bw.newLine();
+            bw.newLine();
+            
+            // Input yg dipake
+            bw.write("INPUT:");
+            bw.newLine();
+            for (int i = 0; i < input.getRows(); i++) {
+                for (int j = 0; j < input.getCols(); j++) {
+                    bw.write(String.format("%10.4f ", input.get(i, j)));
+                }
+                bw.newLine();
+            }
+            bw.newLine();
+            
+            // Langkah-langkah
+            bw.write("========================================");
+            bw.newLine();
+            bw.write("LANGKAH-LANGKAH PENYELESAIAN:");
+            bw.newLine();
+            bw.write("========================================");
+            bw.newLine();
+            bw.write(result.getSteps());
+            bw.newLine();
+            
+            System.out.println("Hasil berhasil disimpan ke " + filename);
+            
+        } catch (IOException e) {
+            throw new IOException("Error menulis ke file: " + e.getMessage());
+        } finally {
+            //tutup dan flsuh file
+            if (bw != null) {
+                try {
+                    bw.flush();
+                    bw.close();
+                } catch (IOException e) {
+                    System.err.println("Warning: Gagal menutup file: " + e.getMessage());
+                }
+            }
+        }
+    }
+
+        public static void writeDeterminanOutput(String filename, DeterminanResult result, Matrix input) throws IOException {
+        BufferedWriter bw = null;
+        
+        try {
+            bw = new BufferedWriter(new FileWriter(filename));
+
+            bw.write("========================================");
+            bw.newLine();
+            bw.write("  HASIL PENYELESAIAN DETERMINAN MATRIKS");
+            bw.newLine();
+            bw.write("========================================");
+            bw.newLine();
+            bw.newLine();
+            
+            // Input yg dipake
+            bw.write("INPUT:");
+            bw.newLine();
+            for (int i = 0; i < input.getRows(); i++) {
+                for (int j = 0; j < input.getCols(); j++) {
+                    bw.write(String.format("%10.4f ", input.get(i, j)));
+                }
+                bw.newLine();
+            }
+            bw.newLine();
+            
+            // Langkah-langkah
+            bw.write("========================================");
+            bw.newLine();
+            bw.write("LANGKAH-LANGKAH PENYELESAIAN:");
+            bw.newLine();
+            bw.write("========================================");
+            bw.newLine();
+            bw.write(result.getSteps());
+            bw.newLine();
+            
+            System.out.println("Hasil berhasil disimpan ke " + filename);
+            
+        } catch (IOException e) {
+            throw new IOException("Error menulis ke file: " + e.getMessage());
+        } finally {
+            //tutup dan flsuh file
+            if (bw != null) {
+                try {
+                    bw.flush();
+                    bw.close();
+                } catch (IOException e) {
+                    System.err.println("Warning: Gagal menutup file: " + e.getMessage());
+                }
+            }
+        }
+    }
 
 }

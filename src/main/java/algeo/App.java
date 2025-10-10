@@ -278,7 +278,8 @@ public class App {
         System.out.println("=".repeat(55));
     }
     
-    private static void handleDeterminant() {
+    
+    private static void handleDeterminant() throws IOException{
         System.out.println("=====================================================");
         System.out.println("                  DETERMINAN MATRIKS                 ");
         System.out.println("=====================================================\n");
@@ -308,9 +309,9 @@ public class App {
             matrix = inputMatrix();
         } 
         else if (inputType == 2) {
-            System.out.print("\nMasukkan nama file (contoh: test/determinan/spl_case1.txt): ");
+            System.out.print("\nMasukkan nama file (contoh: test/determinan/determinan_case1.txt): ");
             String filename = scanner.nextLine();
-            // matrix = FileHandler.readMatrix(filename); //PR
+            matrix = FileHandler.readMatrix(filename);
             System.out.println("File berhasil dibaca!");
         } 
         else {
@@ -333,6 +334,35 @@ public class App {
         System.out.println("=".repeat(55));
 
         result.printSteps();
+
+        System.out.println();
+        System.out.print("Simpan hasil ke file? (y/n): ");
+        String save = scanner.nextLine().trim();
+
+        if (save.equalsIgnoreCase("y")) {
+            System.out.println("\nPilih lokasi penyimpanan:");
+            System.out.println("1. Folder saat ini (root)");
+            System.out.println("2. Folder test/determinan");
+            System.out.print("Pilih (1/2): ");
+                
+            int choice = getIntInput("");
+            String folder = (choice == 2) ? "test/determinan/" : "";
+                
+            System.out.print("Nama file output: ");
+            String outputFile = scanner.nextLine().trim();
+                
+            String fullPath = folder + outputFile;
+                
+            // Buat folder jika pilih opsi 2 dan folder belum ada
+            if (choice == 2) {
+                File dir = new File("test/determinan");
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+            }
+                
+            FileHandler.writeDeterminanOutput(fullPath, result, matrix);
+        }
     }
     
     private static Matrix inputMatrix() {
@@ -363,8 +393,23 @@ public class App {
             
             for (int j = 0; j < n; j++) {
                 try {
-                    matrix.set(i, j, Double.parseDouble(values[j]));
-                } catch (NumberFormatException e) {
+                    String val = values[j].replace(",", ".");
+                    if (val.contains("/")) {
+                        String[] parts = val.split("/");
+                        if (parts.length == 2) {
+                            double pembilang = Double.parseDouble(parts[0]);
+                            double penyebut = Double.parseDouble(parts[1]);
+                            matrix.set(i, j, pembilang/penyebut);
+                        } 
+                        else {
+                            throw new NumberFormatException();
+                        }
+                    } 
+                    else {
+                        matrix.set(i, j, Double.parseDouble(val));
+                    }
+                } 
+                catch (NumberFormatException e) {
                     System.out.println("Error: Format angka tidak valid!");
                     i--;
                     break;
@@ -379,7 +424,7 @@ public class App {
         return matrix;
     }
 
-    private static void handleInverse() {
+    private static void handleInverse() throws IOException{
         System.out.println("=====================================================");
         System.out.println("            MATRIKS BALIKAN (INVERSE)                ");
         System.out.println("=====================================================\n");
@@ -409,9 +454,9 @@ public class App {
             matrix = inputMatrix();
         } 
         else if (inputType == 2) {
-            System.out.print("\nMasukkan nama file (contoh: test/invers/spl_case1.txt): ");
+            System.out.print("\nMasukkan nama file (contoh: test/invers/invers_case1.txt): ");
             String filename = scanner.nextLine();
-            // matrix = FileHandler.readMatrix(filename); //PR
+            matrix = FileHandler.readMatrix(filename);
             System.out.println("File berhasil dibaca!");
         } 
         else {
@@ -433,6 +478,35 @@ public class App {
         System.out.println("=".repeat(55));
 
         result.printSteps();
+
+        System.out.println();
+        System.out.print("Simpan hasil ke file? (y/n): ");
+        String save = scanner.nextLine().trim();
+
+        if (save.equalsIgnoreCase("y")) {
+            System.out.println("\nPilih lokasi penyimpanan:");
+            System.out.println("1. Folder saat ini (root)");
+            System.out.println("2. Folder test/invers");
+            System.out.print("Pilih (1/2): ");
+                
+            int choice = getIntInput("");
+            String folder = (choice == 2) ? "test/invers/" : "";
+                
+            System.out.print("Nama file output: ");
+            String outputFile = scanner.nextLine().trim();
+                
+            String fullPath = folder + outputFile;
+                
+            // Buat folder jika pilih opsi 2 dan folder belum ada
+            if (choice == 2) {
+                File dir = new File("test/invers");
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+            }
+                
+            FileHandler.writeInversOutput(fullPath, result, matrix);
+        }
     }
     
     private static void handleInterpolation() {

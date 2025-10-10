@@ -67,32 +67,11 @@ algeo1-il-principe/
 │   ├── .keep/                                                            
 ├── .vscode/
 │   ├── .settings.json/       
-├── bin/
-│   ├── matrix/
-│   │    ├── FileHandler.class
-│   │    ├── FileHandler$1.class
-│   │    ├── Matrix.class                        
-│   ├── spl/
-│   │     ├── CramerRule.class
-│   │     ├── GaussElimination.class
-│   │     ├── GaussJordan.class
-│   │    ├── InversMethod.class
-│   │     ├── SPLResult.class
-│   │    ├── SPLResult$SolutionType.class
-│   │    ├── SPLSolver.class
-│   ├── determinan/   
-│   │    ├── Determinan.class
-│   │    ├── DeterminanResult.class                        
-│   ├── invers/     
-│   │    ├── Invers.class
-│   │    ├──InversResult.class
-│   ├── interpolasi/                          
-│   ├── regresi/
-│   ├── Main.class/                          
-│   ├── invers$1.class/                                    
-├── docs/         
-├── src/
-│   ├── Main.java                      
+├── bin/                                   
+├── docs/
+    ├──.gitkeep        
+├── src/main/java/algeo
+│   ├── App.java                      
 │   ├── matrix/
 │   │   ├── Matrix.java                 
 │   │   └── FileHandler.java          
