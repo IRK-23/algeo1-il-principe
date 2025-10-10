@@ -64,14 +64,14 @@ public class CramerRule implements SPLSolver {
         result.addStep("LANGKAH 1: Hitung det(A)");
         result.addStep("========================================\n");
         
-        StringBuilder detASteps = new StringBuilder();
-        double detA = detCalculator.rekursiEkspansiKofaktor(A, detASteps);
+        // StringBuilder detASteps = new StringBuilder();
+        double detA = detCalculator.detOBE(A).getValue();
         
-        result.addStep(detASteps.toString());
-        result.addStep(String.format("det(A) = %.6f\n", detA));
+        // result.addStep(detASteps.toString());
+        result.addStep(String.format("det(A) = %g\n", detA));
         
         // Cek apakah det(A) = 0
-        if (Math.abs(detA) < 1e-10) {
+        if (Math.abs(detA) == 0) {
             result.addStep("========================================");
             result.addStep("KESIMPULAN");
             result.addStep("========================================");
@@ -89,7 +89,7 @@ public class CramerRule implements SPLSolver {
         }
         
         // det(A) ≠ 0, maka ada solusi unik
-        result.addStep("det(A) ≠ 0, maka SPL memiliki SOLUSI UNIK\n");
+        result.addStep("det(A) != 0, maka SPL memiliki SOLUSI UNIK\n");
         
         // Hitung setiap x_i menggunakan Cramer's Rule
         double[] solution = new double[n];
@@ -109,18 +109,18 @@ public class CramerRule implements SPLSolver {
             result.addStep(Ai.matrixToString(Ai));
             
             // Hitung det(A_i)
-            StringBuilder detAiSteps = new StringBuilder();
-            double detAi = detCalculator.rekursiEkspansiKofaktor(Ai, detAiSteps);
+            // StringBuilder detAiSteps = new StringBuilder();
+            double detAi = detCalculator.detOBE(Ai).getValue();
             
-            result.addStep(detAiSteps.toString());
-            result.addStep(String.format("det(A%d) = %.6f\n", i + 1, detAi));
+            // result.addStep(detAiSteps.toString());
+            result.addStep(String.format("det(A%d) = %g\n", i + 1, detAi));
             
             // Hitung x_i = det(A_i) / det(A)
             solution[i] = detAi / detA;
             
             result.addStep(String.format("x%d = det(A%d) / det(A)", i + 1, i + 1));
-            result.addStep(String.format("x%d = %.6f / %.6f", i + 1, detAi, detA));
-            result.addStep(String.format("x%d = %.6f\n", i + 1, solution[i]));
+            result.addStep(String.format("x%d = %gf / %g", i + 1, detAi, detA));
+            result.addStep(String.format("x%d = %g\n", i + 1, solution[i]));
         }
         
         // Hasil
@@ -129,7 +129,7 @@ public class CramerRule implements SPLSolver {
         result.addStep("========================================");
         result.addStep("Solusi Unik:");
         for (int i = 0; i < n; i++) {
-            result.addStep(String.format("x%d = %.6f", i + 1, solution[i]));
+            result.addStep(String.format("x%d = %g", i + 1, solution[i]));
         }
         result.addStep("");
         
@@ -144,7 +144,7 @@ public class CramerRule implements SPLSolver {
                 sum += A.get(i, j) * solution[j];
             }
             double diff = Math.abs(sum - b[i]);
-            result.addStep(String.format("Persamaan %d: %.6f ≈ %.6f (selisih: %.2e)", 
+            result.addStep(String.format("Persamaan %d: %g ≈ %g (selisih: %.2e)", 
                      i + 1, sum, b[i], diff));
             
             if (diff > 1e-6) {

@@ -87,56 +87,46 @@ public class Invers {
         steps.append("Matriks [A|I]:\n");
         steps.append(m.matrixToString(m)).append("\n\n");
 
-        // OBE fase maju
+        // fase maju
         for (int i=0;i<m.getRows();i++){
-            do{
-                int a = det.firstZeroTotal(m,i);
-            
-                if (a==m.getRows()){
-                    steps.append("Matriks [I|A] tidak dapat terbentuk, maka invers matriks A tidak ada.\n");
-                    return new InversResult(null, steps);
+            int maxRow = i;
+            double maxVal = Math.abs(m.get(i,i));
+            for (int k=i+1;k<m.getRows();k++){
+                if (Math.abs(m.get(k,i)) > maxVal){
+                    maxVal = Math.abs(m.get(k,i));
+                    maxRow = k;
                 }
-
-                if (m.get(i,i)==0){
-                    int b = det.firstZeroTotal(m, a);
-                    if (a>b){
-                        steps.append("Tukar baris ").append(i+1).append(" dengan baris ").append(a+1).append("\n");
-                        det.swapRow(m,i,a);
-                        steps.append(m.matrixToString(m)).append("\n\n");
-                    }
-                    else{
-                        steps.append("Matriks [I|A] tidak dapat terbentuk, maka invers matriks A tidak ada.\n");
-                        return new InversResult(null, steps);
-                    }
-                }
-    
-                if (a<i){
-                    for (int j=0;j<i;j++){
-                        if (m.get(i,j)!=0){
-                            double x = m.get(i, j) / m.get(j, j);
-                            steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" - (").append(x).append(") * Baris ").append(j+1).append("\n");
-                            m.subtractMultipliedRow(m, i, j, x);
-                            steps.append(m.matrixToString(m)).append("\n\n");
-                        }
-                    }
-                }
-            } while (det.firstZeroTotal(m,i)!=i);
-
-            if (m.get(i,i)!=1 && m.get(i,i)!=0){
-                double x = 1/m.get(i,i);
-                steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" * ").append(x).append("\n");
-                m.multiplyRow(m,i,x);
+            }
+            if (maxRow != i){
+                steps.append("Tukar baris ").append(i+1).append(" dengan baris ").append(maxRow+1).append("\n");
+                det.swapRow(m,i,maxRow);
                 steps.append(m.matrixToString(m)).append("\n\n");
+            }
+
+            if (m.get(i,i)==0){
+                steps.append("Pivot 0, matriks tidak memiliki invers.\n");
+                return new InversResult(null, steps);
+            }
+
+            for (int j=i+1;j<m.getRows();j++){
+                double x = m.get(j,i) / m.get(i,i);
+                if (x!=0){
+                    steps.append("Baris ").append(j+1).append(" = Baris ").append(j+1).append(" - (").append(String.format("%.4f",x)).append(") * Baris ").append(i+1).append("\n");
+                    m.subtractMultipliedRow(m,j,i,x);
+                    steps.append(m.matrixToString(m)).append("\n\n");
+                }
             }
         }
 
-        // OBE fase mundur
-        for (int i=0;i<m.getRows();i++){
-            for(int j=i+1;j<m.getRows();j++){
-                double x = m.get(i,j)/m.get(j,j);
-                steps.append("Baris ").append(i+1).append(" = Baris ").append(i+1).append(" - (").append(String.format("%.4f", x)).append(") * Baris ").append(j+1).append("\n");
-                m.subtractMultipliedRow(m,i,j,x);
-                steps.append(m.matrixToString(m)).append("\n\n");
+        // fase mundur
+        for (int i=m.getRows()-1;i>=0;i--){
+            for (int j=i-1;j>=0;j--){
+                double x = m.get(j,i) / m.get(i,i);
+                if (x!=0){
+                    steps.append("Baris ").append(j+1).append(" = Baris ").append(j+1).append(" - (").append(String.format("%.4f",x)).append(") * Baris ").append(i+1).append("\n");
+                    m.subtractMultipliedRow(m,j,i,x);
+                    steps.append(m.matrixToString(m)).append("\n\n");
+                }
             }
         }
 
