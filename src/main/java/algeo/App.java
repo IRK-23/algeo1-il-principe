@@ -176,7 +176,6 @@ public class App {
                 }
                 
                 FileHandler.writeSPLOutput(fullPath, result, augmented);
-                System.out.println("✓ Hasil berhasil disimpan ke: " + fullPath);
             }
         }
     }

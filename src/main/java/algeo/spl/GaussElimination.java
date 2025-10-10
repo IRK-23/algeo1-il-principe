@@ -54,7 +54,7 @@ public class GaussElimination implements SPLSolver {
             // Tukar baris jika perlu
             if (maxRow != i) {
                 swapRows(m, i, maxRow);
-                result.addStep(String.format("Tukar baris %d ↔ baris %d:", i+1, maxRow+1));
+                result.addStep(String.format("Tukar baris %d dengan baris %d:", i+1, maxRow+1));
                 result.addStep(matrixToString(m));
             }
             
@@ -93,7 +93,7 @@ public class GaussElimination implements SPLSolver {
                 double factor = m.get(k, i) / m.get(i, i);
                 
                 if (Math.abs(factor) > EPSILON) {
-                    result.addStep(String.format("\nBaris_%d = Baris_%d - (%.4f) × Baris_%d", 
+                    result.addStep(String.format("\nBaris_%d = Baris_%d - (%.4f) * Baris_%d", 
                         k+1, k+1, factor, i+1));
                     
                     for (int j = i; j < cols; j++) {
@@ -187,7 +187,7 @@ public class GaussElimination implements SPLSolver {
                 sb.append(String.format("x%d = (%.4f", i+1, m.get(i, cols-1)));
                 for (int j = i + 1; j < numVars; j++) {
                     if (Math.abs(m.get(i, j)) >= EPSILON) {
-                        sb.append(String.format(" - %.4f×%.6f", m.get(i, j), solution[j]));
+                        sb.append(String.format(" - %.4f*%.6f", m.get(i, j), solution[j]));
                     }
                 }
                 sb.append(String.format(") / %.4f = %.6f", m.get(i, i), solution[i]));

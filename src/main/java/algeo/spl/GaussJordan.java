@@ -50,7 +50,7 @@ public class GaussJordan implements SPLSolver {
             // Tukar baris
             if (i != r) {
                 swapRows(m, i, r);
-                result.addStep(String.format("Tukar baris %d ↔ baris %d:", r+1, i+1));
+                result.addStep(String.format("Tukar baris %d dengan baris %d:", r+1, i+1));
                 result.addStep(matrixToString(m));
             }
             
@@ -74,7 +74,7 @@ public class GaussJordan implements SPLSolver {
                     if (k != r) {
                         double factor = m.get(k, lead);
                         if (Math.abs(factor) >= EPSILON) {
-                            result.addStep(String.format("\nBaris_%d = Baris_%d - (%.4f) × Baris_%d", 
+                            result.addStep(String.format("\nBaris_%d = Baris_%d - (%.4f) * Baris_%d", 
                                 k+1, k+1, factor, r+1));
                             
                             for (int j = 0; j < cols; j++) {

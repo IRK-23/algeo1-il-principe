@@ -32,9 +32,9 @@ public class CramerRule implements SPLSolver {
         
         // Validasi: harus sistem n x n
         if (m != n + 1) {
-            result.addStep("ERROR: Metode Cramer hanya untuk sistem n×n");
-            result.addStep("Ukuran matriks: " + n + "×" + m);
-            result.addStep("Dibutuhkan: n×(n+1) untuk matriks augmented [A|b]");
+            result.addStep("ERROR: Metode Cramer hanya untuk sistem nxn");
+            result.addStep("Ukuran matriks: " + n + "x" + m);
+            result.addStep("Dibutuhkan: nx(n+1) untuk matriks augmented [A|b]");
             result.setType(SPLResult.SolutionType.NO_SOLUTION);
             return result;
         }
