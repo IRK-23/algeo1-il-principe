@@ -84,22 +84,6 @@ public class Determinan {
         }
     }
 
-    public int firstZeroTotal(Matrix matrix, int row){
-        int n=0;
-        for (int j=0;j<matrix.getCols();j++){
-            if (matrix.get(row, j)!=0){
-                return n;
-            }
-            else{
-                n+=1;
-            }
-            if (j==matrix.getCols()-1){
-                return n;
-            }
-        }
-        return 0;
-    }
-
     public DeterminanResult detOBE(Matrix matrix){
         StringBuilder steps = new StringBuilder();
         Matrix m = matrix.copy();
