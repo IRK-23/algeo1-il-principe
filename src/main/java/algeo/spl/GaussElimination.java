@@ -1,6 +1,6 @@
-package spl;
+package algeo.spl;
 
-import matrix.Matrix;
+import algeo.matrix.Matrix;
 // Implementasi metode Eliminasi Gauss untuk menyelesaikan SPL
 // Menggunakan Forward Elimination (Fase Maju) dan Back Substitution (Substitusi/Penyulihan Mundur)
 public class GaussElimination implements SPLSolver {

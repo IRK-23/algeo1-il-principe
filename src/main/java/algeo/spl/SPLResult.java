@@ -1,4 +1,4 @@
-package spl;
+package algeo.spl;
 
 import java.util.ArrayList;
 import java.util.List;

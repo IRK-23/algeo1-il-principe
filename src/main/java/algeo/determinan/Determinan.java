@@ -1,5 +1,5 @@
-package determinan;
-import matrix.Matrix;
+package algeo.determinan;
+import algeo.matrix.Matrix;
 import java.lang.Math;
 
 public class Determinan { 

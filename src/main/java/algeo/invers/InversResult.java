@@ -1,17 +1,18 @@
-package determinan;
-import matrix.Matrix;
+package algeo.invers;
+import algeo.matrix.Matrix;
+import algeo.determinan.*;
 
-public class DeterminanResult{
-    private double value;
+public class InversResult {
+    private Matrix matrix;
     private StringBuilder steps;
     
-    public DeterminanResult(double value, StringBuilder steps){
-        this.value = value;
+    public InversResult(Matrix matrix, StringBuilder steps){
+        this.matrix = matrix;
         this.steps = steps;
     }
     
-    public double getValue(){
-        return value;
+    public Matrix getMatrix(){
+        return matrix;
     }
     
     public String getSteps(){

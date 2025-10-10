@@ -1,9 +1,9 @@
-package matrix;
+package algeo.matrix;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import spl.SPLResult;
+import algeo.spl.SPLResult;
 
 public class FileHandler {
     

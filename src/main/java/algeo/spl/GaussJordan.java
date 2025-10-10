@@ -1,6 +1,6 @@
-package spl;
+package algeo.spl;
 
-import matrix.Matrix;
+import algeo.matrix.Matrix;
 // Implementasi metode Eliminasi Gauss-Jordan untuk menyelesaikan SPL
 // Menggunakan eliminasi penuh (forward dan backward) untuk menghasilkan reduced row echelon form
 public class GaussJordan implements SPLSolver {

@@ -1,6 +1,6 @@
-package spl;
+package algeo.spl;
 
-import matrix.Matrix;
+import algeo.matrix.Matrix;
 
 //Interface solver Sistem Persamaan Linier
 public interface SPLSolver {
