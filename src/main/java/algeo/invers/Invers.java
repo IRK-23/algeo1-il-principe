@@ -1,6 +1,6 @@
-package invers;
-import matrix.Matrix;
-import determinan.*;
+package algeo.invers;
+import algeo.matrix.Matrix;
+import algeo.determinan.*;
 
 public class Invers {
     private Determinan det = new Determinan();

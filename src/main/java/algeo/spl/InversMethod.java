@@ -1,8 +1,8 @@
-package spl;
+package algeo.spl;
 
-import matrix.Matrix;
-import invers.Invers;
-import invers.InversResult;
+import algeo.matrix.Matrix;
+import algeo.invers.Invers;
+import algeo.invers.InversResult;
  //Solver SPL menggunakan metode matriks balikan (invers)
  //Menyelesaikan SPL Ax = b dengan rumus x = A^(-1)b
 public class InversMethod implements SPLSolver {

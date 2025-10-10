@@ -1,11 +1,12 @@
-package matrix;
+package algeo.matrix;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import spl.SPLResult;
-import determinan.DeterminanResult;
-import invers.InversResult;
+
+import algeo.determinan.DeterminanResult;
+import algeo.invers.InversResult;
+import algeo.spl.SPLResult;
 
 public class FileHandler {
     
@@ -198,6 +199,7 @@ public class FileHandler {
         }
     }
 
+    
     public static void writeInversOutput(String filename, InversResult result, Matrix input) throws IOException {
         BufferedWriter bw = null;
         

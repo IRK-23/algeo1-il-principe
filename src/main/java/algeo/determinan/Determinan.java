@@ -1,6 +1,6 @@
-package determinan;
-import matrix.Matrix;
-import java.lang.Math;
+package algeo.determinan;
+import algeo.matrix.Matrix;
+
 
 public class Determinan { 
     public double detM2x2(Matrix matrix){

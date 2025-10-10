@@ -1,7 +1,7 @@
-package spl;
+package algeo.spl;
 
-import matrix.Matrix;
-import determinan.Determinan;
+import algeo.matrix.Matrix;
+import algeo.determinan.Determinan;
 // Implementasi metode Cramer untuk menyelesaikan SPL
 // Metode Cramer: x_i = det(A_i) / det(A)
 // dimana A_i adalah matriks A dengan kolom ke-i diganti dengan vektor b
