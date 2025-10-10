@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.lang.Math;
 import algeo.determinan.DeterminanResult;
 import algeo.invers.InversResult;
 import algeo.spl.SPLResult;
@@ -83,6 +84,17 @@ public class FileHandler {
                 }
             }
         }
+    }
+
+    public static Matrix[] readVandermondeMatrix(String filename) throws IOException {
+        Matrix input = readMatrix(filename);
+        Matrix[] res;
+        Matrix Vandermonde = new Matrix(input.getRows(), input.getRows());
+        Matrix yValue = new Matrix(input.getRows(), 1);
+
+        res[0] = Vandermonde;
+        res[1] = yValue;
+
     }
     
     
