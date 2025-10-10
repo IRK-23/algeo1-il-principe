@@ -3,9 +3,7 @@ package spl;
 import java.util.ArrayList;
 import java.util.List;
 
-//Class untuk menyimpan hasil penyelesaian SPL
 public class SPLResult {
-    //Tipe solusi SPL
     public enum SolutionType {
         UNIQUE,
         NO_SOLUTION,
@@ -13,10 +11,10 @@ public class SPLResult {
     }
     
     private SolutionType type;
-    private double[] solution;              // Solusi tunggal
-    private String parametricSolution;      // Solusi parametrik
-    private List<String> steps;             // Langkah-langkah penyelesaian
-    private String methodName;              // Metode yang digunakan
+    private double[] solution;              
+    private String parametricSolution;      
+    private List<String> steps;            
+    private String methodName;           
     
     public SPLResult() {
         steps = new ArrayList<>();
@@ -25,8 +23,7 @@ public class SPLResult {
     public void addStep(String step) {
         steps.add(step);
     }
-    
-    // Getters dan Setters
+
     public SolutionType getType() {
         return type;
     }

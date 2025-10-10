@@ -2,12 +2,9 @@ package spl;
 
 import matrix.Matrix;
 import determinan.Determinan;
-
-/**
- * Implementasi metode Cramer untuk menyelesaikan SPL
- * Metode Cramer: x_i = det(A_i) / det(A)
- * dimana A_i adalah matriks A dengan kolom ke-i diganti dengan vektor b
- */
+// Implementasi metode Cramer untuk menyelesaikan SPL
+// Metode Cramer: x_i = det(A_i) / det(A)
+// dimana A_i adalah matriks A dengan kolom ke-i diganti dengan vektor b
 public class CramerRule implements SPLSolver {
     
     private Determinan detCalculator;
@@ -126,7 +123,7 @@ public class CramerRule implements SPLSolver {
             result.addStep(String.format("x%d = %.6f\n", i + 1, solution[i]));
         }
         
-        // Ringkasan hasil
+        // Hasil
         result.addStep("========================================");
         result.addStep("HASIL AKHIR");
         result.addStep("========================================");
@@ -156,9 +153,9 @@ public class CramerRule implements SPLSolver {
         }
         
         if (verified) {
-            result.addStep("\n✓ Verifikasi BERHASIL - Solusi benar!");
+            result.addStep("\n Verifikasi BERHASIL - Solusi benar!");
         } else {
-            result.addStep("\n⚠ Perhatian: Ada selisih kecil karena pembulatan numerik");
+            result.addStep("\n Perhatian: Ada selisih kecil karena pembulatan numerik");
         }
         
         result.setType(SPLResult.SolutionType.UNIQUE);
@@ -167,14 +164,11 @@ public class CramerRule implements SPLSolver {
         return result;
     }
     
-    /**
-     * Validasi apakah matriks cocok untuk metode Cramer
-     */
+    // Validasi apakah matriks bisa diselesaikan untuk metode Cramer
     public static boolean isValidForCramer(Matrix augmentedMatrix) {
         int n = augmentedMatrix.getRows();
         int m = augmentedMatrix.getCols();
         
-        // Harus n×(n+1)
         return m == n + 1;
     }
 }

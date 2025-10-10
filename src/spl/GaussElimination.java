@@ -1,11 +1,8 @@
 package spl;
 
 import matrix.Matrix;
-
-/**
- * Implementasi metode Eliminasi Gauss untuk menyelesaikan SPL
- * Menggunakan Forward Elimination (Fase Maju) dan Back Substitution (Substitusi Mundur)
- */
+// Implementasi metode Eliminasi Gauss untuk menyelesaikan SPL
+// Menggunakan Forward Elimination (Fase Maju) dan Back Substitution (Substitusi/Penyulihan Mundur)
 public class GaussElimination implements SPLSolver {
     private static final double EPSILON = 1e-10;
     
@@ -33,12 +30,12 @@ public class GaussElimination implements SPLSolver {
         
         // ============================================
         // FASE MAJU (FORWARD ELIMINATION)
-        // Tujuan: Mengubah matriks menjadi bentuk eselon baris (row echelon form)
-        // Hanya mengeliminasi elemen DI BAWAH pivot
+        // Mengubah matriks menjadi bentuk eselon baris
+        // Eliminasi elemen DI BAWAH satu utama/pivot
         // ============================================
         result.addStep("\n=== FASE MAJU (FORWARD ELIMINATION) ===");
         result.addStep("Tujuan: Bentuk matriks segitiga atas (upper triangular)");
-        result.addStep("Eliminasi hanya dilakukan pada baris di BAWAH pivot\n");
+        result.addStep("Eliminasi hanya dilakukan pada baris di BAWAH satu utama/pivot\n");
         
         // Proses hanya sampai min(n, numVars) untuk overdetermined system
         int maxPivot = Math.min(n, numVars);
@@ -46,7 +43,7 @@ public class GaussElimination implements SPLSolver {
         for (int i = 0; i < maxPivot; i++) {
             result.addStep(String.format("--- Pivot pada baris %d, kolom %d ---", i+1, i+1));
             
-            // Cari pivot terbesar (partial pivoting)
+            // Cari pivot terbesar
             int maxRow = i;
             for (int k = i + 1; k < n; k++) {
                 if (Math.abs(m.get(k, i)) > Math.abs(m.get(maxRow, i))) {
@@ -89,7 +86,7 @@ public class GaussElimination implements SPLSolver {
                 continue;
             }
             
-            // HANYA ELIMINASI BARIS DI BAWAH PIVOT (karakteristik fase maju)
+            // HANYA ELIMINASI BARIS DI BAWAH SATU UTAMA/PIVOT (FASE MAJU)
             result.addStep(String.format("Eliminasi elemen di BAWAH pivot m[%d][%d] = %.4f", i+1, i+1, m.get(i, i)));
             
             for (int k = i + 1; k < n; k++) {
@@ -157,7 +154,7 @@ public class GaussElimination implements SPLSolver {
         // SUBSTITUSI MUNDUR (BACK SUBSTITUTION)
         // Menghitung nilai variabel dari bawah ke atas
         // ============================================
-        result.addStep("\n=== SUBSTITUSI MUNDUR (BACK SUBSTITUTION) ===");
+        result.addStep("\n=== SUBSTITUSI/PENYULLIHAN MUNDUR (BACK SUBSTITUTION) ===");
         result.addStep("Menghitung nilai variabel dari x_n ke x_1\n");
         
         double[] solution = new double[numVars];
@@ -181,7 +178,7 @@ public class GaussElimination implements SPLSolver {
             
             // Tampilkan proses substitusi
             if (i == numVars - 1) {
-                // Variabel terakhir (paling sederhana)
+                // Variabel terakhir
                 result.addStep(String.format("x%d = %.4f / %.4f = %.6f", 
                     i+1, m.get(i, cols-1), m.get(i, i), solution[i]));
             } else {

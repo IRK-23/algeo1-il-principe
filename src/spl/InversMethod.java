@@ -3,11 +3,8 @@ package spl;
 import matrix.Matrix;
 import invers.Invers;
 import invers.InversResult;
-
-
  //Solver SPL menggunakan metode matriks balikan (invers)
  //Menyelesaikan SPL Ax = b dengan rumus x = A^(-1)b
- 
 public class InversMethod implements SPLSolver {
     
     private Invers inversCalculator;
@@ -86,7 +83,7 @@ public class InversMethod implements SPLSolver {
             }
         }
         
-        // Format hasil perkalian
+        // Hasil perkalian
         result.addStep("\nPerkalian matriks A^(-1) dengan vektor b:");
         StringBuilder calculation = new StringBuilder();
         for (int i = 0; i < n; i++) {
@@ -109,7 +106,7 @@ public class InversMethod implements SPLSolver {
         result.setType(SPLResult.SolutionType.UNIQUE);
         result.setSolution(x);
         
-        // Format solusi akhir
+        // Solusi akhir
         result.addStep("\n=== SOLUSI AKHIR ===");
         StringBuilder finalSolution = new StringBuilder();
         for (int i = 0; i < n; i++) {
