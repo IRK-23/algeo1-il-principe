@@ -82,15 +82,16 @@ public class FileHandler {
         }
     }
     
-    // Menulis hasil SPL ke file
+    
+    // Method utama untuk menulis hasil SPL ke file
+    // Konsisten untuk semua metode (Gauss, Gauss-Jordan, Cramer, Invers) 
     public static void writeSPLOutput(String filename, SPLResult result, Matrix input) 
             throws IOException {
         BufferedWriter bw = null;
         
         try {
             bw = new BufferedWriter(new FileWriter(filename));
-            
-            // Metode yang digunakan
+
             bw.write("========================================");
             bw.newLine();
             bw.write("  HASIL PENYELESAIAN SISTEM PERSAMAAN LINIER");
@@ -103,7 +104,7 @@ public class FileHandler {
             bw.newLine();
             bw.newLine();
             
-            // Input yang digunakan
+            // Input yg dipake
             bw.write("INPUT (Matriks Augmented):");
             bw.newLine();
             for (int i = 0; i < input.getRows(); i++) {
@@ -164,10 +165,12 @@ public class FileHandler {
             bw.write("========================================");
             bw.newLine();
             
+            System.out.println("Hasil berhasil disimpan ke " + filename);
+            
         } catch (IOException e) {
             throw new IOException("Error menulis ke file: " + e.getMessage());
         } finally {
-            // Pastikan file selalu ditutup dan di-flush
+            //tutup dan flsuh file
             if (bw != null) {
                 try {
                     bw.flush();
@@ -178,4 +181,6 @@ public class FileHandler {
             }
         }
     }
+
+
 }

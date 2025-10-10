@@ -1,11 +1,8 @@
 package spl;
 
 import matrix.Matrix;
-
-/**
- * Implementasi metode Eliminasi Gauss-Jordan untuk menyelesaikan SPL
- * Menggunakan eliminasi penuh (forward dan backward) untuk menghasilkan reduced row echelon form
- */
+// Implementasi metode Eliminasi Gauss-Jordan untuk menyelesaikan SPL
+// Menggunakan eliminasi penuh (forward dan backward) untuk menghasilkan reduced row echelon form
 public class GaussJordan implements SPLSolver {
     private static final double EPSILON = 1e-10;
     
@@ -29,7 +26,7 @@ public class GaussJordan implements SPLSolver {
         result.addStep("=== MATRIKS AUGMENTED AWAL ===");
         result.addStep(matrixToString(m));
         result.addStep("\n=== ELIMINASI GAUSS-JORDAN ===");
-        result.addStep("(Eliminasi dilakukan ke atas DAN ke bawah dari pivot)\n");
+        result.addStep("(Eliminasi dilakukan ke atas DAN ke bawah dari satu utama/pivot)\n");
         
         int lead = 0;
         
@@ -38,7 +35,7 @@ public class GaussJordan implements SPLSolver {
             
             int i = r;
             
-            // Cari pivot
+            // Cari satu utama/pivot
             while (Math.abs(m.get(i, lead)) < EPSILON) {
                 i++;
                 if (i == n) {
@@ -125,7 +122,7 @@ public class GaussJordan implements SPLSolver {
             return result;
         }
         
-        // Baca solusi langsung (tidak perlu back substitution)
+        // Baca solusi langsung (ga perlu back substitution)
         result.addStep("\n=== SOLUSI ===");
         result.addStep("(Langsung terbaca dari matriks tereduksi)");
         double[] solution = new double[numVars];
