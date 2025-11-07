@@ -1,0 +1,24 @@
+========================================
+  HASIL PENYELESAIAN SISTEM PERSAMAAN LINIER
+========================================
+
+Metode: Eliminasi Gauss-Jordan
+
+INPUT (Matriks Augmented):
+    1,0000    -1,0000     0,0000     0,0000     1,0000     3,0000 
+    1,0000     1,0000     0,0000    -3,0000     0,0000     6,0000 
+    2,0000    -1,0000     0,0000     1,0000    -1,0000     5,0000 
+   -1,0000     2,0000     0,0000    -2,0000    -1,0000    -1,0000 
+
+========================================
+LANGKAH-LANGKAH PENYELESAIAN:
+========================================
+PERHATIAN: Sistem underdetermined
+Jumlah persamaan (4) < jumlah variabel (5)
+
+========================================
+HASIL:
+========================================
+SOLUSI TAK HINGGA
+Sistem memiliki tak hingga banyak solusi.
+

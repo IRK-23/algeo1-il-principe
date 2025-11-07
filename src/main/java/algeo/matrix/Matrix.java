@@ -1,0 +1,95 @@
+package algeo.matrix;
+
+public class Matrix {
+    private double[][] data;
+    private int rows;
+    private int cols;
+    
+    public Matrix(int rows, int cols) {
+        this.rows = rows;
+        this.cols = cols;
+        this.data = new double[rows][cols];
+    }
+    
+    public double get(int i, int j) {
+        return data[i][j];
+    }
+    
+    public void set(int i, int j, double value) {
+        data[i][j] = value;
+    }
+    
+    public int getRows() {
+        return rows;
+    }
+    
+    public int getCols() {
+        return cols;
+    }
+    
+    public double[][] getData() {
+        return data;
+    }
+    
+    public Matrix copy() {
+        Matrix result = new Matrix(rows, cols);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result.set(i, j, this.get(i, j));
+            }
+        }
+        return result;
+    }
+    
+    public void print() {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.printf("%.2f ", data[i][j]);
+            }
+            System.out.println();
+        }
+    }
+    
+    public Matrix getSubMatrix(int startRow, int endRow, int startCol, int endCol) {
+        Matrix sub = new Matrix(endRow - startRow + 1, endCol - startCol + 1);
+        for (int i = startRow; i <= endRow; i++) {
+            for (int j = startCol; j <= endCol; j++) {
+                sub.set(i - startRow, j - startCol, this.get(i, j));
+            }
+        }
+        return sub;
+    }
+
+    public void multiplyRow(Matrix matrix, int row, double x){
+        for (int j=0; j<matrix.getCols(); j++){
+            matrix.set(row, j, matrix.get(row, j) * x);
+        }
+    }
+
+    public void subtractMultipliedRow(Matrix matrix, int row1, int row2, double x){
+        for (int j=0; j<matrix.getCols(); j++){
+            matrix.set(row1, j, matrix.get(row1, j) - x * matrix.get(row2, j));
+        }
+    }
+
+    public Matrix matrixTranpos(Matrix matrix){
+        Matrix m = new Matrix(matrix.getRows(), matrix.getCols());
+        for (int i=0;i<m.getRows();i++){
+            for (int j=0;j<m.getCols();j++){
+                m.set(j,i,matrix.get(i,j));
+            }
+        }
+        return m;
+    }
+
+    public String matrixToString(Matrix m) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < m.getRows(); i++) {
+            for (int j = 0; j < m.getCols(); j++) {
+                sb.append(String.format("%10.4f ", m.get(i, j)));
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+}
