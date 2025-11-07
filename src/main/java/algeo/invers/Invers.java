@@ -133,7 +133,7 @@ public class Invers {
         // taroh inversnya
         for (int i=0;i<invers.getRows();i++){
             for (int j=0;j<invers.getCols();j++){
-                invers.set(i,j,m.get(i,m.getRows()+j));
+                invers.set(i,j,m.get(i,m.getRows()+j)/m.get(i,i));
             }
         }
 
